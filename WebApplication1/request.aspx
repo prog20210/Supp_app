@@ -5,113 +5,155 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title> Форма отправки запроса в техническую поддержку URT</title>
+</head>
+        <li>
+           <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <style>
+.wrapper {
+  background-color: whitesmoke;
+  list-style-type: none;
+  padding: 0;
+  border-radius: 3px;
+}
+.form-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: .5em;
+}
+.form-row > label {
+  padding: .5em 1em .5em 0;
+  flex: 1;
+}
+.form-row > input {
+  flex: 2;
+}
+.form-row > input,
+.form-row > button {
+  padding: .5em;
+}
+.form-row > button {
+  background: gray;
+  color: white;
+  border: 0;
+}
+@media screen and (min-width: 768px) {
+  .form-row > input {
+    flex: 3; 
+  }
+}
+@media screen and (min-width: 992px) {
+  .form-row > input {
+    flex: 4; 
+  }
+}
+@media screen and (min-width: 1200px) {
+  .form-row > input {
+    flex: 5; 
+  }
+}
+
+.butt {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: center;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 20em;
+}
+
+.submit:hover,
+.submit:focus {
+  background-color: #fb8332;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.submit:hover {
+  transform: translateY(-1px);
+}
+
+.submit:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+</style>
 </head>
 <body>
-    <pre class="has-inner-focus"><code class="lang-aspx-csharp" data-author-content='<%@ Page Language="C#" AutoEventWireup="True" %>
+<h2>Форма отправки запроса в отдел технической поддержки </h2>
+<form action="/Home/CreateUser" method="post">
+  <ul class="wrapper">
+    <li class="form-row">
+        <label>Марка </label>
+        <input name="trademark" value="" />
+        </li>
+    
+    <li class="form-row">
+        <label>Город </label>
+        <input name="city" value="" />
+    </li>
+    
+      
+          <li class="form-row">
 
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
-&lt;html xmlns="http://www.w3.org/1999/xhtml" &gt;
-&lt;head&gt;
-    &lt;title&gt;Button Example&lt;/title&gt;
-&lt;script language="C#" runat="server"&gt;
+        <label>Подразделение</label>
+        <input name="" value="" />
+    </li>
 
-      void SubmitBtn_Click(Object sender, EventArgs e) 
-      {
-         Message.Text="Hello World!!";
-      }
+          <li class="form-row">
+        <label>Фамилия </label>
+        <input name="lastName" />
+        </li>
+          <li class="form-row">
 
-   &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-   &lt;form id="form1" runat="server"&gt;
+        <label>Имя</label>
+        <input name="firstName" />
+    </li>
+      
+      <li class="form-row">
 
-      &lt;h3&gt;Button Example&lt;/h3&gt;
+        <label>Отчество </label>
+        <input name="otch" />
+    </li>
+<li class="form-row">
 
-      Click on the submit button.&lt;br /&gt;&lt;br /&gt;
- 
-      &lt;asp:Button id="Button1"
-           Text="Submit"
-           OnClick="SubmitBtn_Click" 
-           runat="server"/&gt;
-       
-      &lt;br /&gt;
+        <label>Краткое описание случая</label>
+        <input name="opsl" />
+    </li>
+        <pre> 
+            <!-- HTML !-->
+<p align="center">
+<input type="submit" class="butt" value="Отправить запрос" />
+</p>
 
-      &lt;asp:label id="Message" runat="server"/&gt;
- 
-   &lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-'><span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/1999/xhtml&quot;</span> &gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Button Example<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">language</span>=<span class="hljs-string">&quot;C#&quot;</span> <span class="hljs-attr">runat</span>=<span class="hljs-string">&quot;server&quot;</span>&gt;</span><span class="cs">
+<p align="center">
+<input type="submit" class="butt" value="На главную" />
+</p>
 
-      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SubmitBtn_Click</span>(<span class="hljs-params">Object sender, EventArgs e</span>)</span> 
-      {
-         Message.Text=<span class="hljs-string">&quot;Hello World!!&quot;</span>;
-      }
-
-   </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;form1&quot;</span> <span class="hljs-attr">runat</span>=<span class="hljs-string">&quot;server&quot;</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Button Example<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-
-      Click on the submit button.<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;&lt;<span class="hljs-name">br</span> /&gt;</span>
- 
-      <span class="hljs-tag">&lt;<span class="hljs-name">asp:Button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Button1&quot;</span>
-           <span class="hljs-attr">Text</span>=<span class="hljs-string">&quot;Submit&quot;</span>
-           <span class="hljs-attr">OnClick</span>=<span class="hljs-string">&quot;SubmitBtn_Click&quot;</span> 
-           <span class="hljs-attr">runat</span>=<span class="hljs-string">&quot;server&quot;</span>/&gt;</span>
-       
-      <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">asp:label</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Message&quot;</span> <span class="hljs-attr">runat</span>=<span class="hljs-string">&quot;server&quot;</span>/&gt;</span>
- 
-   <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
-</span></code></pre>
-    <pre class="has-inner-focus"><code class="lang-aspx-csharp" data-author-content='<%@ Page Language="C#" AutoEventWireup="True" %>
-
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
-&lt;html xmlns="http://www.w3.org/1999/xhtml" &gt;
-&lt;head&gt;
-    &lt;title&gt;Button Example&lt;/title&gt;
-&lt;script language="C#" runat="server"&gt;
-
-      void SubmitBtn_Click(Object sender, EventArgs e) 
-      {
-         Message.Text="Hello World!!";
-      }
-
-   &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-   &lt;form id="form1" runat="server"&gt;
-
-      &lt;h3&gt;Button Example&lt;/h3&gt;
-
-      Click on the submit button.&lt;br /&gt;&lt;br /&gt;
- 
-      &lt;asp:Button id="Button1"
-           Text="Submit"
-           OnClick="SubmitBtn_Click" 
-           runat="server"/&gt;
-       
-      &lt;br /&gt;
-
-      &lt;asp:label id="Message" runat="server"/&gt;
- 
-   &lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-'><span>
-</span></code></pre>
+</form>
+   
 </body>
 </html>
