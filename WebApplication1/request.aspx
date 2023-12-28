@@ -104,9 +104,14 @@
 </head>
 <body>
 <h2>Форма отправки запроса в отдел технической поддержки </h2>
-<form action="/Home/CreateUser" method="post">
+<form action="/request" method="post">
   <ul class="wrapper">
-    <li class="form-row">
+
+<li class="form-row">
+        <label>E-Mail </label>
+        <input name="email" value="" />
+    </li>
+<li class="form-row">
         <label>Марка </label>
         <input name="trademark" value="" />
         </li>
@@ -116,14 +121,11 @@
         <input name="city" value="" />
     </li>
     
-      
           <li class="form-row">
-
         <label>Подразделение</label>
         <input name="" value="" />
     </li>
-
-          <li class="form-row">
+     <li class="form-row">
         <label>Фамилия </label>
         <input name="lastName" />
         </li>
@@ -138,6 +140,7 @@
         <label>Отчество </label>
         <input name="otch" />
     </li>
+    
 <li class="form-row">
 
         <label>Краткое описание случая</label>

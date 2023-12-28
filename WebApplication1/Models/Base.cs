@@ -18,9 +18,14 @@ namespace WebApplication1.Models
 
         public string Dep { get; set; }
 
+        public string City { get; set; }
+
+
         public string Dolz { get; set; }
 
         public string Req { get; set; }
+
+
 
     }
 

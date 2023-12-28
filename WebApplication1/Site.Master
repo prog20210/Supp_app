@@ -54,6 +54,9 @@
                         <li><a runat="server" href="~/">Домашняя</a></li>
                         <li><a runat="server" href="~/About">Информация</a></li>
                         <li><a runat="server" href="~/Contact">Связаться</a></li>
+                        <li><a runat="server" href="~/request.aspx">Оставить запрос в техподдержку</a></li>
+
+
                     </ul>
                 </div>
             </div>
@@ -63,7 +66,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - мое приложение ASP.NET</p>
+                <p>&copy; <%: DateTime.Now.Year %> Техподдержка Uniretail </p>
             </footer>
         </div>
 
