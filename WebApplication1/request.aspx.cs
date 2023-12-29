@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace WebApplication1
 {
     public partial class request : System.Web.UI.Page
@@ -12,12 +13,9 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //request request;
-            //request.
-
         }
+    }
 
 
 
     }
-}

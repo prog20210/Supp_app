@@ -1,0 +1,98 @@
+﻿@{
+    if (IsPost)
+    {
+        
+            switch (Request.Form["btn"])
+            {
+                case "send":
+                    <p>It was btn1</p>
+                    break;
+                case "back":
+                    <p>It was btn2</p>
+                    break;
+            }
+
+
+
+
+
+
+
+        }
+
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <link rel="stylesheet" href="main.css">
+    </head>
+
+    <body>
+        <form action="/req1" method="post">
+            <ul class="wrapper">
+
+                <li class="form-row">
+                    <label>E-Mail </label>
+                    <input name="email" value="" />
+                </li>
+                <li class="form-row">
+                    <label>Марка </label>
+                    <input name="trademark" value="" />
+                </li>
+
+                <li class="form-row">
+                    <label>Город </label>
+                    <input name="city" value="" />
+                </li>
+
+                <li class="form-row">
+                    <label>Подразделение</label>
+                    <input name="" value="" />
+                </li>
+                <li class="form-row">
+                    <label>Фамилия </label>
+                    <input name="lastName" />
+                </li>
+                <li class="form-row">
+
+                    <label>Имя</label>
+                    <input name="firstName" />
+                </li>
+
+                <li class="form-row">
+
+                    <label>Отчество </label>
+                    <input name="otch" />
+                </li>
+
+                <li class="form-row">
+
+                    <label>Краткое описание случая</label>
+                    <input name="opsl" />
+                </li>
+                <pre> 
+            <!-- HTML !-->
+<p align="center">
+<input type="submit" class="butt" name="send" value="Отправить запрос" />
+
+
+
+
+
+
+
+<p align="center">
+<input type="submit" class="butt" name="back" value="На главную" />
+
+
+
+
+
+
+
+        </form>
+
+    </body>
+</html>
