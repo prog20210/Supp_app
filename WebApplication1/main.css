@@ -319,7 +319,10 @@
     transform: translateY(0);
 }
 
-
+.email {
+    min-height: 3rem;
+    width: 20em;
+}
 
 
 
