@@ -7,96 +7,490 @@
         string email = Request.Form["email"];
         string trademark = Request.Form["trademark"];
         string city = Request.Form["city"];
-        string otd = Request.Form["otd"];
+        string dep = Request.Form["dep"];
         string lastname = Request.Form["lastName"];
         string firstname = Request.Form["firstName"];
-        string otc = Request.Form["otc"];
+        string otch = Request.Form["otch"];
+        string dolz = Request.Form["dolz"];
+
         string opsl = Request.Form["opsl"];
 
 
 
 
         <text>
-            You entered: <br />
-            emai: @email <br />
-            mark: @trademark <br />
-            city: @city <br />
-            dep: @otd <br />
-             
-            </text>
+            <br> You entered: <br />
+            <br> emai: @email <br />
+            <br> mark: @trademark <br />
+            <br> city: @city <br />
+            <br> dep: @dep <br />
+            <br>фамилия: @lastname <br />
+            <br>имя: @firstname <br />
+            <br>отчество: @otch <br />
+            <br> dolz: @dolz <br />
+            <br>случай: @opsl <br />
 
-        }
+
+
+        </text>
+
     }
+}
 
 
         }
 
-        <!DOCTYPE html>
+<!DOCTYPE html>
 
-        <html>
-        <head>
-            <link rel="stylesheet" href="main.css">
-        </head>
+<html>
+<head>
+    <link rel="stylesheet" href="main.css">
+</head>
 
-        <body>
-            <form action="/req1" method="post">
-                <ul class="wrapper">
+<body>
+    <form action="/req1" method="post">
+        <ul class="wrapper">
 
-                    <li class="form-row">
-                        <label>E-Mail </label>
-                        <input name="email" value="" />
-                        <p align="right">
-                            <input type="submit" class="butt" name="fill" value="Заполнить по e-mail" />
-                            {
-                            min-height: 3rem;
-                            width: 10em;
+            <li class="form-row">
+                <label>E-Mail </label>
+                <input name="email" value="" />
+                <p align="right">
+                    <input type="submit" class="butt" name="fill" value="Заполнить по e-mail" />
+                    {
+                    min-height: 3rem;
+                    width: 10em;
 
-                            }
+                    }
 
-                        </p>
-                    </li>
-                    <li class="form-row">
-                        <label>Марка </label>
-                        <input name="trademark" value="" />
-                    </li>
+                </p>
+            </li>
+            <li class="form-row">
+                <label>Марка </label>
+                <input name="trademark" value="" />
+            </li>
 
-                    <li class="form-row">
-                        <label>Город </label>
-                        <input name="city" value="" />
-                    </li>
+            <li class="form-row">
+                <label>Город </label>
+                <input name="city" value="" />
+            </li>
 
-                    <li class="form-row">
-                        <label>Подразделение</label>
-                        <input name="otd" value="" />
-                    </li>
-                    <li class="form-row">
-                        <label>Фамилия </label>
-                        <input name="lastName" />
-                    </li>
-                    <li class="form-row">
+            <li class="form-row">
+                <label>Подразделение</label>
+                <input name="dep" value="" />
+            </li>
+            <li class="form-row">
+                <label>Фамилия </label>
+                <input name="lastName" />
+            </li>
+            <li class="form-row">
 
-                        <label>Имя</label>
-                        <input name="firstName" />
-                    </li>
+                <label>Имя</label>
+                <input name="firstName" />
+            </li>
 
-                    <li class="form-row">
+            <li class="form-row">
 
-                        <label>Отчество </label>
-                        <input name="otch" />
-                    </li>
+                <label>Отчество </label>
+                <input name="otch" />
+            </li>
 
-                    <li class="form-row">
 
-                        <label>Краткое описание случая</label>
-                        <input name="opsl" />
-                    </li>
-                    <pre> 
+            <li class="form-row">
+
+                <label>Должность </label>
+                <input name="dolz" />
+            </li>
+
+            <li class="form-row">
+
+                <label>Краткое описание случая</label>
+                <input name="opsl" />
+            </li>
+            <pre> 
             <!-- HTML !-->
 <p align="center">
 <input type="submit" class="butt" name="send" value="Отправить запрос" />
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p align="center">
 <input type="submit" class="butt" name="back" value="На главную" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -160,7 +554,7 @@
 
 
 
-            </form>
+    </form>
 
-        </body>
-    </html>
+</body>
+</html>

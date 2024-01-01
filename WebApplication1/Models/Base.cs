@@ -10,20 +10,22 @@ namespace WebApplication1.Models
         public int id { get; set; }
 
 
-        public string Surname { get; set; }
+        public string surname { get; set; }
 
-        public string Name { get; set; }
+        public string name { get; set; }
 
-        public string Otch { get; set; }
+        public string otch { get; set; }
 
-        public string Dep { get; set; }
+        public string dep { get; set; }
 
-        public string City { get; set; }
+        public string city { get; set; }
 
+        public string otd { get; set; }
+        
 
-        public string Dolz { get; set; }
+        public string dolz { get; set; }
 
-        public string Req { get; set; }
+        public string opsl { get; set; }
 
 
 
@@ -56,7 +58,7 @@ namespace WebApplication1.Models
 
         public string Otch { get; set; }
 
-        public string Dep { get; set; }
+        public string dep { get; set; }
 
         public string Dolz { get; set; }
 

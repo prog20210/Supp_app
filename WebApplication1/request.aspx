@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="request.aspx.cs" Inherits="WebApplication1.request" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="req1.chtml" Inherits="WebApplication1.request" %>
 
 <!DOCTYPE html>
 
@@ -104,7 +104,7 @@
 </head>
 <body>
 <h2>Форма отправки запроса в отдел технической поддержки </h2>
-<form action="/request" method="post">
+<form action="/req1" method="post">
   <ul class="wrapper">
 
 <li class="form-row">
@@ -140,7 +140,15 @@
         <label>Отчество </label>
         <input name="otch" />
     </li>
-    
+   <li class="form-row">
+
+        <label>Должность </label>
+        <input name="dolz" />
+    </li>
+
+
+
+
 <li class="form-row">
 
         <label>Краткое описание случая</label>
