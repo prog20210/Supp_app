@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title> Форма отправки запроса в техническую поддержку URT</title>
+    <title align="center"> Форма отправки запроса в техническую поддержку URT</title>
 </head>
         <li>
            <meta charset="utf-8" />
@@ -100,6 +100,12 @@
   transform: translateY(0);
 }
 
+        h2 {
+            text-align: center;
+        }
+
+
+
 </style>
 </head>
 <body>
@@ -123,7 +129,7 @@
     
           <li class="form-row">
         <label>Подразделение</label>
-        <input name="" value="" />
+        <input name="dep" value="" />
     </li>
      <li class="form-row">
         <label>Фамилия </label>
