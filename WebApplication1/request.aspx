@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="req1.chtml" Inherits="WebApplication1.request" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="req1.cshtml" Inherits="WebApplication1.request" %>
 
 <!DOCTYPE html>
 
@@ -104,8 +104,6 @@
             text-align: center;
         }
 
-
-
 </style>
 </head>
 <body>
@@ -152,6 +150,11 @@
         <input name="dolz" />
     </li>
 
+      <li class="form-row">
+
+        <label>Версия URT </label>
+        <input name="ver" />
+    </li>
 
 
 
@@ -167,7 +170,7 @@
 </p>
 
 <p align="center">
-<input type="submit" class="butt" value="На главную" />
+<input type="submit" class="butt" click="Button1_Click" value="На главную" />
 </p>
 
 </form>

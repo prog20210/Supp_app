@@ -1,4 +1,12 @@
-﻿@{
+﻿
+@using Npgsql;
+@using Npgsql.EntityFrameworkCore.PostgreSQL.Design
+@using System.Configuration;
+@using System.Globalization;
+
+
+@{
+
 
     if (IsPost) // Если входящий запрос
     {
@@ -15,8 +23,31 @@
 
         string opsl = Request.Form["opsl"];
 
+        string urtver = Request.Form["ver"];
 
 
+        NpgsqlConnection con = new NpgsqlConnection();
+
+        con.ConnectionString = "Server = 127.0.0.1; Port = 5433; Database = sup; User Id = postgres; Password =12345";
+
+        try
+        {
+            con.Open();
+
+            NpgsqlCommand com = con.CreateCommand();
+            com.CommandText = "select * from users";
+
+            NpgsqlDataReader reader = com.ExecuteReader();
+
+
+           
+
+        }
+        catch
+        {
+
+
+        }
 
         <text>
             <br> You entered: <br />
@@ -30,85 +61,32 @@
             <br> dolz: @dolz <br />
             <br>случай: @opsl <br />
 
-
-
         </text>
 
     }
+
+
+
 }
 
 
-        }
+                }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <link rel="stylesheet" href="main.css">
-</head>
 
-<body>
-    <form action="/req1" method="post">
-        <ul class="wrapper">
 
-            <li class="form-row">
-                <label>E-Mail </label>
-                <input name="email" value="" />
-             
-                <input type="submit" class="butt" name="fill" style="main.css" value="Заполнить по e-mail" /> 
 
-                </p>
-            </li>
-            <li class="form-row">
-                <label>Марка </label>
-                <input name="trademark" value="" />
-            </li>
 
-            <li class="form-row">
-                <label>Город </label>
-                <input name="city" value="" />
-            </li>
 
-            <li class="form-row">
-                <label>Подразделение</label>
-                <input name="dep" value="" />
-            </li>
-            <li class="form-row">
-                <label>Фамилия </label>
-                <input name="lastName" />
-            </li>
-            <li class="form-row">
 
-                <label>Имя</label>
-                <input name="firstName" />
-            </li>
 
-            <li class="form-row">
 
-                <label>Отчество </label>
-                <input name="otch" />
-            </li>
 
 
-            <li class="form-row">
 
-                <label>Должность </label>
-                <input name="dolz" />
-            </li>
 
-            <li class="form-row">
 
-                <label>Краткое описание случая</label>
-                <input name="opsl" />
-            </li>
-            <pre> 
-            <!-- HTML !-->
-<p align="center">
-<input type="submit" class="butt" name="send" value="Отправить запроc"
-</p>
 
-<p align="center">
-<input type="submit" class="butt" name="back" value="На главную" /> </p>
 
 
 
@@ -350,6 +328,7 @@
 
 
 
+                >
 
 
 
@@ -364,7 +343,6 @@
 
 
 
->
 
 
 
@@ -410,21 +388,7 @@
 
 
 
+                </form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </form>
-
-</body>
-</html>
+                </body>
+                </html>
