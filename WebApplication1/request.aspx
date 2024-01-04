@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="req1.cshtml" Inherits="WebApplication1.request" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="req1.cshtml" runat="server" Inherits="WebApplication1.request" %>
 
 <!DOCTYPE html>
 
@@ -163,15 +163,31 @@
         <label>Краткое описание случая</label>
         <input name="opsl" />
     </li>
+
+      <li class="form-row">
+
+        <label>Телефонный номер </label>
+        <input name="tnumb" />
+    </li>
+
+
+
         <pre> 
             <!-- HTML !-->
 <p align="center">
 <input type="submit" class="butt" value="Отправить запрос" />
 </p>
 
+
+
+
+
+
 <p align="center">
 <input type="submit" class="butt" click="Button1_Click" value="На главную" />
 </p>
+
+
 
 </form>
    

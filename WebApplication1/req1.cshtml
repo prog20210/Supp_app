@@ -4,6 +4,10 @@
 @using System.Configuration;
 @using System.Globalization;
 
+@using System.Configuration;
+@using System.Diagnostics;
+@using System.Management.Automation;
+@using System.Web;
 
 @{
 
@@ -20,15 +24,26 @@
         string firstname = Request.Form["firstName"];
         string otch = Request.Form["otch"];
         string dolz = Request.Form["dolz"];
+        string ver = Request.Form["ver"];
 
         string opsl = Request.Form["opsl"];
+
 
         string urtver = Request.Form["ver"];
 
 
+        ConnectionStringSettings constr;
+        constr = ConfigurationManager.ConnectionStrings["con"];
+
+
         NpgsqlConnection con = new NpgsqlConnection();
 
-        con.ConnectionString = "Server = 127.0.0.1; Port = 5433; Database = sup; User Id = postgres; Password =12345";
+        //con.ConnectionString = constr[0];
+
+
+        con.ConnectionString = constr.ToString();
+
+        //"Server = 127.0.0.1; Port = 5433; Database = sup; User Id = postgres; Password =12345";
 
         try
         {
@@ -39,15 +54,29 @@
 
             NpgsqlDataReader reader = com.ExecuteReader();
 
-
-           
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    string id = reader.GetString(0);
+                    string login = reader.GetString(1);
+                    string pass = reader.GetString(2);
+                    string perm = reader.GetString(3);
+                }
+            }
 
         }
+
+        //       com.CommandText= "insert into req(id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl, katsl)"+
+        //"values("+ id+","+"'"+ " +','              +''     ', 'Sankt-Petersburg', 'ul Dybenko', 'Maria', 'Ivanova', 'Ivanovna', 'BC', 'Lost password', 'Restore password');
+
         catch
         {
 
 
         }
+
+
 
         <text>
             <br> You entered: <br />
@@ -63,14 +92,22 @@
 
         </text>
 
+            }
+
+
+        }
+
     }
-
-
-
 }
 
 
-                }
+
+
+
+
+
+
+
 
 
 
