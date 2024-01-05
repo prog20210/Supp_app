@@ -117,9 +117,11 @@
 <form action="/req1" method="post">
   <ul class="wrapper">
 
+      
+
 <li class="form-row">
         <label>E-Mail </label>
-        <input name="email" value="" />
+        <input name="email" value=""  onchange="alert(this.value)" />
     </li>
 <li class="form-row">
         <label>Марка </label>

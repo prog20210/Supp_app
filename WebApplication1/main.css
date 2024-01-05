@@ -320,7 +320,7 @@
 }
 
 .email {
-    form-row min-height: 1rem;
+    form-row: min-height: 1rem;
     width: 5em;
 }
 
