@@ -82,6 +82,7 @@
   touch-action: manipulation;
   vertical-align: baseline;
   width: 20em;
+  text-align=center;
 }
 
 .submit:hover,
@@ -179,13 +180,13 @@
 </p>
 
 
-
-
-
-
 <p align="center">
-<input type="submit" class="butt" click="Button1_Click" value="На главную" />
+<input type="button" class="butt"  value="На главную " onclick="document.location='Default.aspx'" />
 </p>
+
+
+
+
 
 
 
