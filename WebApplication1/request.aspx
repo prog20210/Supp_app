@@ -104,6 +104,11 @@
         h2 {
             text-align: center;
         }
+ 
+        th, td {
+  padding: 15px;
+}
+
 
 </style>
 </head>
@@ -173,18 +178,13 @@
 
 
 
-        <pre> 
-            <!-- HTML !-->
+        
 <p align="center">
-<input type="submit" class="butt" value="Отправить запрос" />
-</p>
-
-
+<input type="submit" class="butt" name="submit" value="Отправить запрос" /></p>
 <p align="center">
-<input type="button" class="butt"  value="На главную " onclick="document.location='Default.aspx'" />
+
+<input type="button" class="butt" name="back" value="На главную " onclick="document.location='Default.aspx'" />
 </p>
-
-
 
 
 
