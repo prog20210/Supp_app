@@ -112,6 +112,35 @@
 
 </style>
 </head>
+<script type="text/javascript" async>
+
+    function autofill() {
+        const { Client } = require("pg")
+        const dotenv = require("dotenv")
+        dotenv.config()
+
+        const connectDb = async () => {
+            try {
+                const client = new Client({
+                    user: postgres;
+                    host: process.env.PGHOST,
+                    database: process.env.PGDATABASE,
+                    password: process.env.PGPASSWORD,
+                    port: process.env.PGPORT
+                })
+
+                await client.connect()
+                const res = await client.query('SELECT * FROM some_table')
+                console.log(res)
+                await client.end()
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        connectDb()
+    }
+</script>
+
 <body>
 <h2>Форма отправки запроса в отдел технической поддержки </h2>
 <form action="/req1" method="post">
@@ -121,7 +150,7 @@
 
 <li class="form-row">
         <label>E-Mail </label>
-        <input name="email" value=""  onchange="alert(this.value)" />
+        <input name="email" value="" />
     </li>
 <li class="form-row">
         <label>Марка </label>
@@ -164,8 +193,6 @@
         <input name="ver" />
     </li>
 
-
-
 <li class="form-row">
 
         <label>Краткое описание случая</label>
@@ -178,16 +205,21 @@
         <input name="tnumb" />
     </li>
 
-
-
+ <p align="center">
+<a href="./fill.js" Заполнить  </a>
         
 <p align="center">
 <input type="submit" class="butt" name="submit" value="Отправить запрос" /></p>
+
 <p align="center">
 
-<input type="button" class="butt" name="back" value="На главную " onclick="document.location='Default.aspx'" />
+<input type="button" class="butt" name="back" value="На главную " onclick="documentdocument.location='Default.aspx'" />
 </p>
 
+<p align="center">
+
+<input type="button" class="butt" name="C:\supapp\WebApplication1\Scripts\fill.js" value="Заполнить" onclick="autofill()" />
+</p>
 
 
 

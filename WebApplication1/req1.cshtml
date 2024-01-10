@@ -9,12 +9,18 @@
 @using System.Management.Automation;
 @using System.Web;
 
+
+
 @{
+
+
+
 
 
     if (IsPost) // Если входящий запрос
     {
         // Разобрать запрос. Присвоить значения переменным
+
 
         string email = Request.Form["email"];
         string trademark = Request.Form["trademark"];
@@ -48,22 +54,19 @@
         try
         {
             con.Open();
-
+            int num;
+            int  numbn;
             NpgsqlCommand com = con.CreateCommand();
-            com.CommandText = "select * from users";
+            com.CommandText = "select count(*) from req";
+            object numb1=com.ExecuteScalar();
+            num = Convert.ToInt16(numb1);
+            numbn = num + 1;
 
-            NpgsqlDataReader reader = com.ExecuteReader();
 
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    string id = reader.GetString(0);
-                    string login = reader.GetString(1);
-                    string pass = reader.GetString(2);
-                    string perm = reader.GetString(3);
-                }
-            }
+         //  com.CommandText = "insert into req(id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl, katsl)" +
+         //  "values("+numb1.ToString()+","+"'"+ email + +"'" +"," +"'"+trademark + "'"+ ', ' + "'"+ city+"'"+ ', '+ +"'"+dep+ "'"+ "'" + firstname + "'";
+
+
 
 
 
@@ -78,6 +81,21 @@
 
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <link rel="stylesheet" href="main.css">
@@ -98,8 +116,8 @@
 
 
         <text>
-         
-Благодарим за информацию. Обязательно проинформируем Вас о результатах отработки обращения 
+
+Благодарим за информацию. Обязательно проинформируем Вас о результатах отработки обращения
 
         </text>
 
