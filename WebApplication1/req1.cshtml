@@ -11,7 +11,10 @@
 
 
 
+
+
 @{
+
 
 
 
@@ -33,8 +36,6 @@
         string ver = Request.Form["ver"];
 
         string opsl = Request.Form["opsl"];
-
-
         string urtver = Request.Form["ver"];
 
 
@@ -57,15 +58,19 @@
             int num;
             int  numbn;
             NpgsqlCommand com = con.CreateCommand();
-            com.CommandText = "select count(*) from req";
+            com.CommandText = "select max(id) from req";
             object numb1=com.ExecuteScalar();
             num = Convert.ToInt16(numb1);
             numbn = num + 1;
 
 
-         //  com.CommandText = "insert into req(id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl, katsl)" +
-         //  "values("+numb1.ToString()+","+"'"+ email + +"'" +"," +"'"+trademark + "'"+ ', ' + "'"+ city+"'"+ ', '+ +"'"+dep+ "'"+ "'" + firstname + "'";
+            com.CommandText = "insert into req(id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl)" +
+         "values ("+numbn.ToString()+","+"'"+ email + "'" +"," +"'"+trademark + "'"+ "," + "'"+ city+"'"+ "," +"'"+dep+ "'"+ "," + "'" + firstname + "'"+ ","+
+        "'"+ lastname+"'"+"," + "'" + otch + "'" + "," + "'" + dolz + "'" + "," + "'" + opsl + "'" +")";
 
+            com.ExecuteScalar();
+
+            //  insert into req(id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl)values(2,'ghghjghjhjgg','jkkghghjghjghjg','mbnvbvnbvbnvbnv','nbnmbnmbnmbnmbnmb','vbvnbvbnvbnvnbvnbvbn','nvvbnvbvnbvbnvbnvbn','vbvbnvnbvbnvbnvbnvbn','gcvcvbcbvcvbcvbcvbcvbcb','nvbnvnbvnbvnbvbnbn')
 
 
 
@@ -120,10 +125,6 @@
 Благодарим за информацию. Обязательно проинформируем Вас о результатах отработки обращения
 
         </text>
-
-
-
-
 
         <p align="center">
 

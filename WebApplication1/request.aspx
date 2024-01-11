@@ -205,23 +205,19 @@
         <input name="tnumb" />
     </li>
 
- <p align="center">
-<a href="./fill.js" Заполнить  </a>
+
         
 <p align="center">
 <input type="submit" class="butt" name="submit" value="Отправить запрос" /></p>
 
 <p align="center">
 
-<input type="button" class="butt" name="back" value="На главную " onclick="documentdocument.location='Default.aspx'" />
+<input type="button" class="butt" name="back" value="На главную " onclick="document.location='Default.aspx'" />
 </p>
 
 <p align="center">
-
-<input type="button" class="butt" name="C:\supapp\WebApplication1\Scripts\fill.js" value="Заполнить" onclick="autofill()" />
+<input type="button" class="butt" name="back" value="Заполнить" onclick="document.location='fill.js'" />
 </p>
-
-
 
 
 </form>
