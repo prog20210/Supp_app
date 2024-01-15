@@ -108,11 +108,21 @@
         th, td {
   padding: 15px;
 }
-
+.email
+{
+ width: 50px
+}
 
 </style>
 </head>
-<script type="text/javascript" async>
+
+
+<body>
+<h2>Форма отправки запроса в отдел технической поддержки </h2>
+<form action="/req1" method="post">
+  <ul class="wrapper">
+
+<script type="text/javascript" scr=".\fill.js" async>
 
     function autofill() {
         const { Client } = require("pg")
@@ -141,16 +151,11 @@
     }
 </script>
 
-<body>
-<h2>Форма отправки запроса в отдел технической поддержки </h2>
-<form action="/req1" method="post">
-  <ul class="wrapper">
-
       
 
 <li class="form-row">
         <label>E-Mail </label>
-        <input name="email" value="" />
+        <input name="email" value=""/>
     </li>
 <li class="form-row">
         <label>Марка </label>

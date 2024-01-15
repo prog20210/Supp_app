@@ -62,11 +62,18 @@
             object numb1=com.ExecuteScalar();
             num = Convert.ToInt16(numb1);
             numbn = num + 1;
+            DateTime dt = DateTime.Now;
+
+            string dattim=dt.ToString();
+
+
+
 
 
             com.CommandText = "insert into req(id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl)" +
-         "values ("+numbn.ToString()+","+"'"+ email + "'" +"," +"'"+trademark + "'"+ "," + "'"+ city+"'"+ "," +"'"+dep+ "'"+ "," + "'" + firstname + "'"+ ","+
-        "'"+ lastname+"'"+"," + "'" + otch + "'" + "," + "'" + dolz + "'" + "," + "'" + opsl + "'" +")";
+"values (" + numbn.ToString() + "," + "'" + email + "'" + "," + "'" + trademark + "'" + "," + "'" + city + "'" + "," + "'" + dep + "'" + "," + "'" + firstname + "'" + "," +
+"'" + lastname + "'" + "," + "'" + otch + "'" + "," + "'" + dolz + "'" + "," + "'" + opsl + "'" + ")";
+
 
             com.ExecuteScalar();
 
