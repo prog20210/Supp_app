@@ -113,6 +113,11 @@
  width: 50px
 }
 
+ .red {
+            color: #ff0000;
+        }
+
+
 </style>
 </head>
 
@@ -122,13 +127,12 @@
 <form action="/req1" method="post">
   <ul class="wrapper">
 
-<script type="text/javascript" scr=".\fill.js" async>
+<script type="text/javascript"  async>
 
     function autofill() {
         const { Client } = require("pg")
         const dotenv = require("dotenv")
         dotenv.config()
-
         const connectDb = async () => {
             try {
                 const client = new Client({
@@ -155,7 +159,7 @@
 
 <li class="form-row">
         <label>E-Mail </label>
-        <input name="email" value=""/>
+        <input name="email" value="" required/>
     </li>
 <li class="form-row">
         <label>Марка </label>
@@ -211,6 +215,8 @@
     </li>
 
 
+
+
         
 <p align="center">
 <input type="submit" class="butt" name="submit" value="Отправить запрос" /></p>
@@ -220,8 +226,37 @@
 <input type="button" class="butt" name="back" value="На главную " onclick="document.location='Default.aspx'" />
 </p>
 
+<script src="fill.js">
+
+    function autofill() {
+        const { Client } = require("pg")
+        const dotenv = require("dotenv")
+        dotenv.config()
+        const connectDb = async () => {
+            try {
+                const client = new Client({
+                    user: postgres;
+                    host: process.env.PGHOST,
+                    database: process.env.PGDATABASE,
+                    password: process.env.PGPASSWORD,
+                    port: process.env.PGPORT
+                })
+
+                await client.connect()
+                const res = await client.query('SELECT * FROM some_table')
+                console.log(res)
+                await client.end()
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        connectDb()
+    }
+</script>
+
+
 <p align="center">
-<input type="button" class="butt" name="back" value="Заполнить" onclick="document.location='fill.js'" />
+<input type="button" class="butt" name="fill"  onclick= "autofill()" value="Заполнить" />
 </p>
 
 
