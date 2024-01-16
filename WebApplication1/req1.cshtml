@@ -55,7 +55,16 @@
             NpgsqlCommand com = con.CreateCommand();
             com.CommandText = "select max(id) from req";
             object numb1=com.ExecuteScalar();
-            num = Convert.ToInt16(numb1);
+            try
+            {
+                num = Convert.ToInt16(numb1);
+            }
+
+            catch
+            {
+                num = 0;
+            }
+
             numbn = num + 1;
             DateTime dt = DateTime.Now;
 
@@ -407,19 +416,6 @@
 
 
                 >
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
