@@ -79,9 +79,9 @@
             string tim = dat[1];
 
 
-            com.CommandText = "insert into req (id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl,dat,tim)" +" "+
+            com.CommandText = "insert into req (id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl,dat,tim,tnumb,urtver)" +" "+
         "values"+" "+ "(" + numbn.ToString() + "," + "'" + email + "'" + "," + "'" + trademark + "'" + "," + "'" + city + "'" + "," + "'" + dep + "'" + "," + "'" + firstname + "'" + "," +
-        "'" + lastname + "'" + "," + "'" + otch + "'" + "," + "'" + dolz + "'" + "," + "'" + opsl + "'" + "," + " TO_DATE (" + "'" + dt1 + "'" + "," + "'YYYY-MM-DD'" + ")" + "," + "LOCALTIME"+ ")";
+        "'" + lastname + "'" + "," + "'" + otch + "'" + "," + "'" + dolz + "'" + "," + "'" + opsl + "'" + "," + " TO_DATE (" + "'" + dt1 + "'" + "," + "'YYYY-MM-DD'" + ")" + "," + "LOCALTIME"+"," + "'" + tnumb + "'" + "," + "'" + ver + "'" + ")";
             // TO_TIME ('08:30 AM', 'HH:MI AM')1
 
             com.ExecuteScalar();
