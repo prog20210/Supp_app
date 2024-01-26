@@ -31,7 +31,8 @@
         string ver = Request.Form["ver"];
 
         string opsl = Request.Form["opsl"];
-        string urtver = Request.Form["ver"];
+        string katsl = Request.Form["ver"];
+        string tnumb = Request.Form["tnumb"];
 
 
         ConnectionStringSettings constr;
@@ -68,16 +69,20 @@
             numbn = num + 1;
             DateTime dt = DateTime.Now;
 
-            string dattim=dt.ToString();
+            string[] dats = dt.GetDateTimeFormats();
 
 
 
+            string dattim=dats[46].ToString();
+            string[] dat=dattim.Split(' ');
+            string dt1 = dat[0];
+            string tim = dat[1];
 
 
-            com.CommandText = "insert into req(id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl)" +
-"values (" + numbn.ToString() + "," + "'" + email + "'" + "," + "'" + trademark + "'" + "," + "'" + city + "'" + "," + "'" + dep + "'" + "," + "'" + firstname + "'" + "," +
-"'" + lastname + "'" + "," + "'" + otch + "'" + "," + "'" + dolz + "'" + "," + "'" + opsl + "'" + ")";
-
+            com.CommandText = "insert into req (id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl,dat,tim)" +" "+
+        "values"+" "+ "(" + numbn.ToString() + "," + "'" + email + "'" + "," + "'" + trademark + "'" + "," + "'" + city + "'" + "," + "'" + dep + "'" + "," + "'" + firstname + "'" + "," +
+        "'" + lastname + "'" + "," + "'" + otch + "'" + "," + "'" + dolz + "'" + "," + "'" + opsl + "'" + "," + " TO_DATE (" + "'" + dt1 + "'" + "," + "'YYYY-MM-DD'" + ")" + "," + "LOCALTIME"+ ")";
+            // TO_TIME ('08:30 AM', 'HH:MI AM')1
 
             com.ExecuteScalar();
 
@@ -143,7 +148,7 @@
         </p>
 
     }
-
+   
 
 }
 
