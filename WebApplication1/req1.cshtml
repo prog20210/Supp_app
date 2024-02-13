@@ -78,10 +78,15 @@
             string dt1 = dat[0];
             string tim = dat[1];
 
+            string[] date1 = dt1.Split('-');
 
-            com.CommandText = "insert into req (id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl,dat,tim,tnumb,urtver)" +" "+
+            string yer = date1[0].ToString();
+
+
+
+            com.CommandText = "insert into req (id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl,dat,tim,tnumb,urtver,yr)" +" "+
         "values"+" "+ "(" + numbn.ToString() + "," + "'" + email + "'" + "," + "'" + trademark + "'" + "," + "'" + city + "'" + "," + "'" + dep + "'" + "," + "'" + firstname + "'" + "," +
-        "'" + lastname + "'" + "," + "'" + otch + "'" + "," + "'" + dolz + "'" + "," + "'" + opsl + "'" + "," + " TO_DATE (" + "'" + dt1 + "'" + "," + "'YYYY-MM-DD'" + ")" + "," + "LOCALTIME"+"," + "'" + tnumb + "'" + "," + "'" + ver + "'" + ")";
+        "'" + lastname + "'" + "," + "'" + otch + "'" + "," + "'" + dolz + "'" + "," + "'" + opsl + "'" + "," + " TO_DATE (" + "'" + dt1 + "'" + "," + "'YYYY-MM-DD'" + ")" + "," + "LOCALTIME"+"," + "'" + tnumb + "'" + "," + "'" + ver + "'"+ "," + "'" + yer + "'" + ")";
             // TO_TIME ('08:30 AM', 'HH:MI AM')1
 
             com.ExecuteScalar();
@@ -102,17 +107,6 @@
 
 
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
