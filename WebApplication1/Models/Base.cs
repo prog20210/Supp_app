@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebApplication1.Models
 {
-    public class Request
+    public class Req
     {
         public int id { get; set; }
 
@@ -44,6 +44,13 @@ namespace WebApplication1.Models
     {
         public int id { get; set; }
         public string Codesol { get; set; }
+
+        public string kodecase { get; set; }
+
+
+        public string kase { get; set; }
+
+
         public string Sol { get; set; }
     }
 
@@ -64,7 +71,12 @@ namespace WebApplication1.Models
 
         public int Rights { get; set; }
 
-
     }
+
+   
+
+
+
+
 
 }

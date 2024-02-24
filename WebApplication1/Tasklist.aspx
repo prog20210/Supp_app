@@ -121,14 +121,15 @@
 
 <body>
 <h2>Список задач на <%: DateTime.Now.Date.ToShortDateString() %> г. </h2>
-<form action="/req1" method="post">
-  <ul class="wrapper">
-<script type="text/javascript"  async>
+<script type="text/javascript" async>
 
-    function autofill() {
         const { Client } = require("pg")
         const dotenv = require("dotenv")
         dotenv.config()
+
+                document.writeln("jjjjjjj");
+
+
         const connectDb = async () => {
             try {
                 const client = new Client({
@@ -147,132 +148,10 @@
                 console.log(error)
             }
         }
-        connectDb()
+    connectDb()
     }
 </script>
 
-   
-
-<li class="form-row">
-        <label>E-Mail </label>
-        <input name="email" value="" required/>
-    </li>
-<li class="form-row">
-        <label>Марка </label>
-        <input name="trademark" value="" />
-        </li>
-    
-    <li class="form-row">
-        <label>Город </label>
-        <input name="city" value="" />
-    </li>
-    
-          <li class="form-row">
-        <label>Подразделение</label>
-        <input name="dep" value="" />
-    </li>
-     <li class="form-row">
-        <label>Фамилия </label>
-        <input name="lastName" />
-        </li>
-          <li class="form-row">
-
-        <label>Имя</label>
-        <input name="firstName" />
-    </li>
-      
-      <li class="form-row">
-
-        <label>Отчество </label>
-        <input name="otch" />
-    </li>
-   <li class="form-row">
-
-        <label>Должность </label>
-        <input name="dolz" />
-    </li>
-
-      <li class="form-row">
-
-        <label>Версия URT </label>
-        <input name="ver" />
-    </li>
-
-<li class="form-row">
-
-        <label>Краткое описание случая</label>
-        <input name="opsl" />
-    </li>
-
-      <li class="form-row">
-
-        <label>Телефонный номер </label>
-        <input name="tnumb" />
-    </li>
-
-
-
-
-        
-<p align="center">
-<input type="submit" class="butt" name="submit" value="Отправить запрос" /></p>
-
-<p align="center">
-
-<input type="button" class="butt" name="back" value="На главную " onclick="document.location='Default.aspx'" />
-</p>
-
-<script src="fill.js">
-
-    function autofill() {
-        const { Client } = require("pg")
-        const dotenv = require("dotenv")
-        dotenv.config()
-        const connectDb = async () => {
-            try {
-                const client = new Client({
-                    user: postgres;
-                    host: process.env.PGHOST,
-                    database: process.env.PGDATABASE,
-                    password: process.env.PGPASSWORD,
-                    port: process.env.PGPORT
-                })
-
-                await client.connect()
-                const res = await client.query('SELECT * FROM some_table')
-                console.log(res)
-                await client.end()
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        connectDb()
-    }
-</script>
-
-
-<p align="center">
-<input type="button" class="butt" name="fill"  onclick= "autofill()" value="Заполнить" />
-</p>
-
-
-</form>
-   
-</body>
-</html>
-       
-
-
-
-
-
-
-
-
-
-
-
-
-    </form>
+ 
 </body>
 </html>
