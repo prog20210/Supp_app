@@ -6,7 +6,7 @@ function autofill();
     const { Client } = require("pg")
     const dotenv = require("dotenv")
     dotenv.config()
-
+    alert("kkkkkk1");
     const connectDb = async () => {
         try {
             const client = new Client({
