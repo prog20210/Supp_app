@@ -15,7 +15,7 @@ namespace WebApplication1
         void Application_Start(object sender, EventArgs e)
         {
             // Код, выполняемый при запуске приложения
-            GlobalConfiguration.Configure(WebApiConfig.Register);
+           // GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

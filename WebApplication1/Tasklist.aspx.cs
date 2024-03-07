@@ -20,14 +20,33 @@ namespace WebApplication1
         {
             ConnectionStringSettings constr;
             constr = ConfigurationManager.ConnectionStrings["con"];
-            NpgsqlConnection con = new NpgsqlConnection();
+            NpgsqlConnection con = new NpgsqlConnection(constr.ConnectionString);
             NpgsqlCommand com = con.CreateCommand();
+            
             com.CommandText = "select * from req";
 
             Addtask task;
-           /// task.Response Ответ от сервера клиенту 
+            /// task.Response Ответ от сервера клиенту 
+            try
+            {
+                con.Open();
+                NpgsqlDataReader rd=com.ExecuteReader();
+
+           if (rd.HasRows)
+                {
+
+                }
+               
+            
+
+            }
 
 
+            catch
+            {
+
+            }
+            
 
         }
     }

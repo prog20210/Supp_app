@@ -8,10 +8,18 @@
 @using System.Diagnostics;
 @using System.Management.Automation;
 @using System.Web;
+@using System.Net.Mail;
+@using System.Net.Mime;
+@using System.Threading;
+@using System.ComponentModel;
 
 
 
 @{
+
+
+
+
 
 
 
@@ -52,10 +60,10 @@
         {
             con.Open();
             int num;
-            int  numbn;
+            int numbn;
             NpgsqlCommand com = con.CreateCommand();
             com.CommandText = "select max(id) from req";
-            object numb1=com.ExecuteScalar();
+            object numb1 = com.ExecuteScalar();
             try
             {
                 num = Convert.ToInt16(numb1);
@@ -73,8 +81,8 @@
 
 
 
-            string dattim=dats[46].ToString();
-            string[] dat=dattim.Split(' ');
+            string dattim = dats[46].ToString();
+            string[] dat = dattim.Split(' ');
             string dt1 = dat[0];
             string tim = dat[1];
 
@@ -84,15 +92,34 @@
 
 
 
-            com.CommandText = "insert into req (id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl,dat,tim,tnumb,urtver,yr)" +" "+
-        "values"+" "+ "(" + numbn.ToString() + "," + "'" + email + "'" + "," + "'" + trademark + "'" + "," + "'" + city + "'" + "," + "'" + dep + "'" + "," + "'" + firstname + "'" + "," +
-        "'" + lastname + "'" + "," + "'" + otch + "'" + "," + "'" + dolz + "'" + "," + "'" + opsl + "'" + "," + " TO_DATE (" + "'" + dt1 + "'" + "," + "'YYYY-MM-DD'" + ")" + "," + "LOCALTIME"+"," + "'" + tnumb + "'" + "," + "'" + ver + "'"+ "," + "'" + yer + "'" + ")";
+            com.CommandText = "insert into req (id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl,dat,tim,tnumb,urtver,yr,status)" + " " +
+        "values" + " " + "(" + numbn.ToString() + "," + "'" + email + "'" + "," + "'" + trademark + "'" + "," + "'" + city + "'" + "," + "'" + dep + "'" + "," + "'" + firstname + "'" + "," +
+        "'" + lastname + "'" + "," + "'" + otch + "'" + "," + "'" + dolz + "'" + "," + "'" + opsl + "'" + "," + " TO_DATE (" + "'" + dt1 + "'" + "," + "'YYYY-MM-DD'" + ")" + "," + "LOCALTIME" + "," + "'" + tnumb + "'" + "," + "'" + ver + "'" + "," + "'" + yer + "'" + "," + "'" + "В работе" + "'" + ")";
             // TO_TIME ('08:30 AM', 'HH:MI AM')1
 
             com.ExecuteScalar();
 
             //  insert into req(id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl)values(2,'ghghjghjhjgg','jkkghghjghjghjg','mbnvbvnbvbnvbnv','nbnmbnmbnmbnmbnmb','vbvnbvbnvbnvnbvnbvbn','nvvbnvbvnbvbnvbnvbn','vbvbnvnbvbnvbnvbnvbn','gcvcvbcbvcvbcvbcvbcvbcb','nvbnvnbvnbvnbvbnbn')
 
+            MailAddress from = new MailAddress("somemail@gmail.com", "Tom");
+            MailAddress to = new MailAddress("somemail@yandex.ru");
+
+
+            
+            // создаем объект сообщения
+            //MailMessage m = new MailMessage(from, to);
+            // тема письма
+            //m.Subject = "Тест";
+            // текст письма
+            //m.Body = "<h2>Письмо-тест работы smtp-клиента</h2>";
+            // письмо представляет код html
+            //m.IsBodyHtml = true;
+            // адрес smtp-сервера и порт, с которого будем отправлять письмо
+            //SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            // логин и пароль
+            //smtp.Credentials = new NetworkCredential("somemail@gmail.com", "mypassword");
+            //smtp.EnableSsl = true;
+            //smtp.Send(m);
 
 
 
@@ -132,7 +159,7 @@
 
         <text>
 
-Благодарим за информацию. Обязательно проинформируем Вас о результатах отработки обращения
+            Благодарим за информацию. Обязательно проинформируем Вас о результатах отработки обращения
 
         </text>
 
@@ -142,11 +169,11 @@
         </p>
 
     }
-   
+
 
 }
 
-   
+
 
 
 
