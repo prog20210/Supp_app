@@ -18,8 +18,18 @@ namespace WebApplication1
     {  public string name="";
         public string date;
         public string  tim;
-        
-       
+        public int id;
+       public  string email;
+       public  string fn, ln;
+        public string otch;
+        public string trademark;
+        public string city;
+        public string dep;
+        public string dolz;
+        public string tnumb;
+
+
+
         public string text="";
         public string kat="";
 
@@ -29,14 +39,47 @@ namespace WebApplication1
             constr = ConfigurationManager.ConnectionStrings["con"];
             NpgsqlConnection con = new NpgsqlConnection(constr.ConnectionString);
             NpgsqlCommand com = con.CreateCommand();
-            
-            com.CommandText = "select * from req";
+            con.Open();
+            if (con.State == System.Data.ConnectionState.Open)
+            {
+                try
 
+                {
+
+
+                    com.CommandText = "select * from req";
+
+                    NpgsqlDataReader rd = com.ExecuteReader();
+                    if (rd.HasRows)
+                    {
+
+
+                        while (rd.Read())
+                        {
+                            int id = Convert.ToInt32(rd[0]);
+                            email = rd[1].ToString();
+                            fn = rd[2].ToString();
+                            ln = rd[3].ToString();
+                            otch = rd[4].ToString();
+                            trademark=rd[5].ToString();
+                            city = rd[6].ToString();
+                            dep = rd[7].ToString();
+                            dolz = rd[8].ToString();
+                            tnumb= rd[9].ToString();
+                        }
+
+                    }
+                }
+                catch
+                {
+
+                }
+            }
             Addtask task=new Addtask();
             task.name = "nnnn";
             task.date = DateTime.Now.Date.ToShortDateString();
             task.tim =DateTime.Now.ToString(("HH:mm:ss"));
-
+           
           
 
 
@@ -44,29 +87,11 @@ namespace WebApplication1
 
 
             /// task.Response Ответ от сервера клиенту 
-            try
-            {
-                con.Open();
-                NpgsqlDataReader rd=com.ExecuteReader();
-
-           if (rd.HasRows)
-                {
-                  
-
-                    
-                }
-               
-            
-
-            }
-
-
-            catch
-            {
-
-            }
+     
             
 
         }
     }
 }
+
+
