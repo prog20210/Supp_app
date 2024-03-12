@@ -15,7 +15,14 @@ using System.Configuration;
 namespace WebApplication1
 {
     public partial class Addtask : System.Web.UI.Page
-    {
+    {  public string name="";
+        public string date;
+        public string  tim;
+        
+       
+        public string text="";
+        public string kat="";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ConnectionStringSettings constr;
@@ -25,7 +32,17 @@ namespace WebApplication1
             
             com.CommandText = "select * from req";
 
-            Addtask task;
+            Addtask task=new Addtask();
+            task.name = "nnnn";
+            task.date = DateTime.Now.Date.ToShortDateString();
+            task.tim =DateTime.Now.ToString(("HH:mm:ss"));
+
+          
+
+
+
+
+
             /// task.Response Ответ от сервера клиенту 
             try
             {
@@ -34,7 +51,9 @@ namespace WebApplication1
 
            if (rd.HasRows)
                 {
+                  
 
+                    
                 }
                
             

@@ -14,11 +14,9 @@
 @using System.ComponentModel;
 
 
-
 @{
 
-
-
+    <link rel="stylesheet" href="main.css">
 
 
 
@@ -99,31 +97,45 @@
 
             com.ExecuteScalar();
 
-            //  insert into req(id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl)values(2,'ghghjghjhjgg','jkkghghjghjghjg','mbnvbvnbvbnvbnv','nbnmbnmbnmbnmbnmb','vbvnbvbnvbnvnbvnbvbn','nvvbnvbvnbvbnvbnvbn','vbvbnvnbvbnvbnvbnvbn','gcvcvbcbvcvbcvbcvbcvbcb','nvbnvnbvnbvnbvbnbn')
+            MailMessage mail = new MailMessage();
 
-            MailAddress from = new MailAddress("somemail@gmail.com", "Tom");
-            MailAddress to = new MailAddress("somemail@yandex.ru");
+            mail.From = new MailAddress("avsemykin2016@yandex.ru", "АВ");
+            mail.To.Add(new MailAddress("avsemykin2016@yandex.ru"));
+
+            mail.Body = "jjjjjjjj";
 
 
-            
-            // создаем объект сообщения
-            //MailMessage m = new MailMessage(from, to);
-            // тема письма
-            //m.Subject = "Тест";
-            // текст письма
-            //m.Body = "<h2>Письмо-тест работы smtp-клиента</h2>";
-            // письмо представляет код html
-            //m.IsBodyHtml = true;
-            // адрес smtp-сервера и порт, с которого будем отправлять письмо
-            //SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            // логин и пароль
-            //smtp.Credentials = new NetworkCredential("somemail@gmail.com", "mypassword");
-            //smtp.EnableSsl = true;
-            //smtp.Send(m);
+
+            SmtpClient smtpClient = new SmtpClient();
+
+            smtpClient.Host = "smtp.yandex.ru";
+            smtpClient.Port = 587;
+            smtpClient.EnableSsl = true;
+            //             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+            smtpClient.Credentials = new System.Net.NetworkCredential("avsemykin2016@yandex.ru", "avs0187");
+            // smtpClient.UseDefaultCredentials = true; // uncomment if you don't want to use the network credentials
+
+            //Setting From , To and CC
+
+
+            smtpClient.Send(mail);
+
+
+
+
+
+
+
 
 
 
         }
+        // логин и пароль
+
+        //smtp.EnableSsl = true;
+
+
 
 
         //       com.CommandText= "insert into req(id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl, katsl)"+
@@ -131,44 +143,29 @@
 
         catch
         {
-
+            //hhhh
 
         }
 
-
-
-
-
-
-        <link rel="stylesheet" href="main.css">
-
-        <text>
-            <br> You entered: <br />
-            <br> emai: @email <br />
-            <br> mark: @trademark <br />
-            <br> city: @city <br />
-            <br> dep: @dep <br />
-            <br>фамилия: @lastname <br />
-            <br>имя: @firstname <br />
-            <br>отчество: @otch <br />
-            <br> dolz: @dolz <br />
-            <br>случай: @opsl <br />
-
-        </text>
-
-
-        <text>
-
-            Благодарим за информацию. Обязательно проинформируем Вас о результатах отработки обращения
-
-        </text>
-
-        <p align="center">
-
-            <input type="butto1n" class="butt" name="back" value="На главную " onclick="document.location='Default.aspx'" />
-        </p>
-
     }
+
+
+
+
+
+
+    <text>
+
+        Благодарим за информацию. Обязательно проинформируем Вас о результатах отработки обращения
+
+    </text>
+
+    <p align="center">
+
+        <input type="button" class="butt" name="back" value="На главную " onclick="document.location='Default.aspx'" />
+    </p>
+
+}
 
 
 }

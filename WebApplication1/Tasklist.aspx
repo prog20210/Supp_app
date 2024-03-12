@@ -121,37 +121,17 @@
 
 <body>
 <h2>Список задач на <%: DateTime.Now.Date.ToShortDateString() %> г. </h2>
-<script type="text/javascript" async>
+<table class="table">
+     <tr><th>Дата</th><th>Время</th></tr>
+    
+    
+        <tr>
+            <td>@task.date</td>
+            <td>@task.tim</td>
+        </tr>
+    
+</table>
 
-        const { Client } = require("pg")
-        const dotenv = require("dotenv")
-        dotenv.config()
 
-                document.writeln("jjjjjjj");
-
-
-        const connectDb = async () => {
-            try {
-                const client = new Client({
-                    user: postgres;
-                    host: process.env.PGHOST,
-                    database: process.env.PGDATABASE,
-                    password: process.env.PGPASSWORD,
-                    port: process.env.PGPORT
-                })
-
-                await client.connect()
-                const res = await client.query('SELECT * FROM some_table')
-                console.log(res)
-                await client.end()
-            } catch (error) {
-                console.log(error)
-            }
-        }
-    connectDb()
-    }
-</script>
-
- 
 </body>
 </html>
