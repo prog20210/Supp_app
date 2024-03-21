@@ -207,20 +207,20 @@
 
       <li class="form-row">
 
-        <label>Версия URT </label>
-        <input name="ver" />
+        <label>Версия URT, Тип и версия операционной системы  </label>
+        <input name="ver" required />
     </li>
 
 <li class="form-row">
 
         <label>Краткое описание случая</label>
-        <input name="opsl" />
+        <input name="opsl" required />
     </li>
 
       
 
-
-
+<a href="guideobr.pdf">Порядок заполнения формы запроса </a>
+      
 
         
 <p align="center">
@@ -235,7 +235,7 @@
 
 
 <p align="center">
-<input type="submit" class="butt" name="fill"  onclick= "autofill()" value="Заполнить" />
+<input type="button" class="butt" name="fill"  onclick= "autofill()" value="Заполнить" />
 </p>
 
 

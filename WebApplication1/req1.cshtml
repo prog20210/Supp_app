@@ -1,7 +1,5 @@
-﻿
-@using Npgsql;
+﻿@using Npgsql;
 @using Npgsql.EntityFrameworkCore.PostgreSQL.Design
-@using System.Configuration;
 @using System.Globalization;
 
 @using System.Configuration;
@@ -12,28 +10,32 @@
 @using System.Net.Mime;
 @using System.Threading;
 @using System.ComponentModel;
+@using System.Text;
 
 
 @{
 
     <link rel="stylesheet" href="main.css">
 
+
     if (IsPost) // Если входящий запрос
     {
         // Разобрать запрос. Присвоить значения переменным
 
 
-        string email = Request.Form["email"];
-        string trademark = Request.Form["trademark"];
-        string city = Request.Form["city"];
+
+
+        string email =Request.Form["email"];
+        string trademark =Request.Form["trademark"];
+        string city =Request.Form["city"];
         string dep = Request.Form["dep"];
-        string lastname = Request.Form["lastName"];
-        string firstname = Request.Form["firstName"];
+        string lastname =Request.Form["lastName"];
+        string firstname =Request.Form["firstName"];
         string otch = Request.Form["otch"];
-        string dolz = Request.Form["dolz"];
+        string dolz =Request.Form["dolz"];
         string ver = Request.Form["ver"];
 
-        string opsl = Request.Form["opsl"];
+        string opsl =Request.Form["opsl"];
         string katsl = Request.Form["ver"];
         string tnumb = Request.Form["tnumb"];
 
@@ -76,14 +78,14 @@
 
 
 
-            string dattim = dats[46].ToString();
+            string dattim = dats[46].ToString().Trim();
             string[] dat = dattim.Split(' ');
-            string dt1 = dat[0];
-            string tim = dat[1];
+            string dt1 = dat[0].ToString().Trim();
+            string tim = dat[1].ToString().Trim();
 
             string[] date1 = dt1.Split('-');
 
-            string yer = date1[0].ToString();
+            string yer = date1[0].ToString().Trim();
 
 
 
@@ -94,32 +96,57 @@
 
             com.ExecuteScalar();
 
-            MailMessage mail = new MailMessage();
 
-            mail.From = new MailAddress("avsemykin2016@yandex.ru", "АВ");
-            mail.To.Add(new MailAddress("avsemykin2016@yandex.ru"));
+         //   var msg = new MailMessage(from, to, subj, body);
+           // var smtpClient = new SmtpClient("smtp.yandex.ru", 25);
+            //smtpClient.Credentials = new NetworkCredential(username, pwd);
+            //smtpClient.EnableSsl = true;
+            ///smtpClient.Send(msg);
 
-            mail.Body = "jjjjjjjj";
 
 
 
-            SmtpClient smtpClient = new SmtpClient();
 
-            smtpClient.Host = "smtp.yandex.ru";
-            smtpClient.Port = 587;
-            smtpClient.EnableSsl = true;
+
+
+
+
+
+
+
+
+
+
+
+
+            //            MailMessage mail = new MailMessage();
+            //          mail.From = new MailAddress("avsemykin2016@yandex.ru", "АВ");
+            //          mail.To.Add(new MailAddress("avsemykin2016@yandex.ru"));
+
+            //     mail.Body = "jjjjjjjj";
+
+
+
+            //     var smtpClient = new SmtpClient("smtp.yandex.ru", 465);
+            //   smtpClient.Credentials = new NetworkCredential("avsemykin2016@yandex.ru", "avs0187");
+
+            // smtpClient.Host = "smtp.yandex.ru";
+
+            //smtpClient.EnableSsl = true;
+            //smtpClient.Credentials = new NetworkCredential("avsemykin2016@yandex.ru", "avs0187"); // Ваши логин и пароль
+
             //             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-            smtpClient.Credentials = new System.Net.NetworkCredential("avsemykin2016@yandex.ru", "avs0187");
+
             // smtpClient.UseDefaultCredentials = true; // uncomment if you don't want to use the network credentials
 
             //Setting From , To and CC
 
 
-            smtpClient.Send(mail);
+            // smtpClient.Send(mail);
 
 
-
+            //mail.Body = "kkkkkkkkkkk";
 
 
 
@@ -163,317 +190,6 @@
     </p>
 
 }
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                >
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -540,6 +540,8 @@
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
     </None>
+    <Content Include="guideobr.pdf" />
+    <Content Include="report.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="main.css" />
     <Content Include="request.aspx" />

@@ -127,10 +127,11 @@
    <p> <%:this.kat %>  </p>
 
         <tr>
-         <td>this.kat</td>
 
             <td>@task.date</td>
             <td>@task.tim</td>
+            <td>this.kat</td>
+
         </tr>
     
 </table>
