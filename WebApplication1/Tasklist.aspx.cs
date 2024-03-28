@@ -79,9 +79,8 @@ namespace WebApplication1
             task.name = "nnnn";
             task.date = DateTime.Now.Date.ToShortDateString();
             task.tim =DateTime.Now.ToString(("HH:mm:ss"));
-           
+            
           
-
 
 
 
@@ -92,7 +91,16 @@ namespace WebApplication1
 
         }
     }
+
+
+
+
+
+
+
+
 }
+
 
 
 

@@ -6,29 +6,27 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
-    public class Home : Controller
+    public class task : Controller
     {
-        // GET: Home
+        // GET: task
         public ActionResult Index()
         {
-            
             return View();
-
         }
 
-        // GET: Home/Details/5
+        // GET: task/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Home/Create
+        // GET: task/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Home/Create
+        // POST: task/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -44,19 +42,13 @@ namespace WebApplication1.Controllers
             }
         }
 
-        // GET: Home/Edit/5
+        // GET: task/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
-        protected internal string Hello()
-        {
-            return "Hello ASP.NET";
-        }
 
-
-
-        // POST: Home/Edit/5
+        // POST: task/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -72,13 +64,13 @@ namespace WebApplication1.Controllers
             }
         }
 
-        // GET: Home/Delete/5
+        // GET: task/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Home/Delete/5
+        // POST: task/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

@@ -11,6 +11,7 @@
 @using System.Threading;
 @using System.ComponentModel;
 @using System.Text;
+@using System.Net;
 
 
 @{
@@ -25,23 +26,40 @@
 
 
 
-        string email =Request.Form["email"];
-        string trademark =Request.Form["trademark"];
-        string city =Request.Form["city"];
+        string email = Request.Form["email"];
+        string trademark = Request.Form["trademark"];
+        string city = Request.Form["city"];
         string dep = Request.Form["dep"];
-        string lastname =Request.Form["lastName"];
-        string firstname =Request.Form["firstName"];
+        string lastname = Request.Form["lastName"];
+        string firstname = Request.Form["firstName"];
         string otch = Request.Form["otch"];
-        string dolz =Request.Form["dolz"];
+        string dolz = Request.Form["dolz"];
         string ver = Request.Form["ver"];
 
-        string opsl =Request.Form["opsl"];
+        string opsl = Request.Form["opsl"];
         string katsl = Request.Form["ver"];
         string tnumb = Request.Form["tnumb"];
+        string from = "";
+        string to = "";
+        string subj="";
+        string body = "";
+        DateTime dt = DateTime.Now;
+        string[] dats = dt.GetDateTimeFormats();
 
 
+        string dattim = dats[46].ToString().Trim();
+        string[] dat = dattim.Split(' ');
+        string dt1 = dat[0].ToString().Trim();
+        string tim = dat[1].ToString().Trim();
+
+
+
+        string[] date1 = dt1.Split('-');
+
+        string yer = date1[0].ToString().Trim();
         ConnectionStringSettings constr;
         constr = ConfigurationManager.ConnectionStrings["con"];
+
 
 
         NpgsqlConnection con = new NpgsqlConnection();
@@ -72,20 +90,9 @@
             }
 
             numbn = num + 1;
-            DateTime dt = DateTime.Now;
-
-            string[] dats = dt.GetDateTimeFormats();
 
 
 
-            string dattim = dats[46].ToString().Trim();
-            string[] dat = dattim.Split(' ');
-            string dt1 = dat[0].ToString().Trim();
-            string tim = dat[1].ToString().Trim();
-
-            string[] date1 = dt1.Split('-');
-
-            string yer = date1[0].ToString().Trim();
 
 
 
@@ -97,14 +104,61 @@
             com.ExecuteScalar();
 
 
-         //   var msg = new MailMessage(from, to, subj, body);
-           // var smtpClient = new SmtpClient("smtp.yandex.ru", 25);
-            //smtpClient.Credentials = new NetworkCredential(username, pwd);
+            var msg = new MailMessage(from, to, subj, body);
+            var smtpClient = new SmtpClient("smtp.yandex.ru", 465);
+            smtpClient.EnableSsl = true;
+
             //smtpClient.EnableSsl = true;
             ///smtpClient.Send(msg);
 
+            NetworkCredential nk = new System.Net.NetworkCredential();
 
 
+
+            nk.Domain = "domain.com";
+            nk.UserName = "email@domain.com";
+            nk.Password = "password";
+            int SmtpPort = 465;
+            string SmtpServer = "smtp.yandex.com";
+            string MailTitle = "";
+            string SenderMail;
+            string senderName = "Техническая поддержка";
+            string recipientEmail;
+            string senderMail="";
+            string mailBody="";
+            string recipient1="";
+            string recipientName = "";
+
+            SmtpClient smtp = new SmtpClient();
+            MailAddress sender = new System.Net.Mail.MailAddress(senderMail, senderName, System.Text.Encoding.UTF8);
+
+
+            MailAddress recipient = new System.Net.Mail.MailAddress(recipient1, recipientName, System.Text.Encoding.UTF8);
+
+            MailMessage em = new System.Net.Mail.MailMessage(sender, recipient);
+
+
+            em.BodyEncoding = System.Text.Encoding.UTF8;
+            em.SubjectEncoding = System.Text.Encoding.UTF8;
+
+            System.Net.Mail.AlternateView plainView = System.Net.Mail.AlternateView.CreateAlternateViewFromString(System.Text.RegularExpressions.Regex.Replace(mailBody, @"<(.|\n)*?>", string.Empty), null, MediaTypeNames.Text.Plain);
+
+            System.Net.Mail.AlternateView htmlView = System.Net.Mail.AlternateView.CreateAlternateViewFromString(mailBody, null, MediaTypeNames.Text.Html);
+
+            em.AlternateViews.Clear();
+            em.AlternateViews.Add(plainView);
+            em.AlternateViews.Add(htmlView);
+
+            System.Net.Mail.SmtpClient SMTP = new System.Net.Mail.SmtpClient();
+            SMTP.Host = SmtpServer;
+            SMTP.Port = SmtpPort;
+            SMTP.EnableSsl = true;
+
+
+
+            SMTP.Credentials = new System.Net.NetworkCredential();
+
+            SMTP.Send(em);
 
 
 

@@ -128,7 +128,7 @@
 
         <tr>
 
-            <td>@task.date</td>
+            <td></td>
             <td>@task.tim</td>
             <td>this.kat</td>
 
