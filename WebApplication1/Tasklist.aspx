@@ -124,13 +124,8 @@
 <table class="table">
      <tr><th>Дата</th><th>Время</th></tr>
     
-   <p> <%:this.kat %>  </p>
-
-        <tr>
-
-            <td></td>
-            <td>@task.tim</td>
-            <td>this.kat</td>
+  
+            
 
         </tr>
     

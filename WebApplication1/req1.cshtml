@@ -103,10 +103,20 @@
 
             com.ExecuteScalar();
 
+            from = "avsemykin2016@yandex.ru";
+            to = "avsemykin2016@yandex.ru";
 
             var msg = new MailMessage(from, to, subj, body);
-            var smtpClient = new SmtpClient("smtp.yandex.ru", 465);
+            var smtpClient = new SmtpClient("smtp.yandex.ru");
+
+
+            smtpClient.Port = 465;
+            smtpClient.Credentials= new NetworkCredential("avsemykin2016@yandex.ru", "avs01871");
             smtpClient.EnableSsl = true;
+            smtpClient.Send("avsemykin2016@yandex.ru", "avsemykin2016@yandex.ru", "test", "jjjjjj");
+
+
+
 
             //smtpClient.EnableSsl = true;
             ///smtpClient.Send(msg);
@@ -115,8 +125,8 @@
 
 
 
-            nk.Domain = "domain.com";
-            nk.UserName = "email@domain.com";
+            nk.Domain = "yandex.ru";
+            nk.UserName = "@domain.com";
             nk.Password = "password";
             int SmtpPort = 465;
             string SmtpServer = "smtp.yandex.com";
@@ -130,6 +140,9 @@
             string recipientName = "";
 
             SmtpClient smtp = new SmtpClient();
+
+            senderMail = "avsemykin2016@yandex.ru";
+            senderName = "ggggg";
             MailAddress sender = new System.Net.Mail.MailAddress(senderMail, senderName, System.Text.Encoding.UTF8);
 
 

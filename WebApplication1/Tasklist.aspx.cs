@@ -76,18 +76,24 @@ namespace WebApplication1
                 }
             }
             Addtask task=new Addtask();
-            task.name = "nnnn";
+            task.name = fn+" "+ ln;
             task.date = DateTime.Now.Date.ToShortDateString();
             task.tim =DateTime.Now.ToString(("HH:mm:ss"));
-            
+            task.city = this.city;
+            task.trademark = this.trademark;
+
+            Table tab = new Table();
+            TableCell cell = new TableCell();
+            cell.Text = task.name;
+          
           
 
 
 
 
             /// task.Response Ответ от сервера клиенту 
-     
-            
+
+
 
         }
     }
