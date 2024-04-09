@@ -121,16 +121,9 @@
 
 <body>
 <h2>Список задач на <%: DateTime.Now.Date.ToShortDateString() %> г. </h2>
-<table class="table">
-     <tr><th>Дата</th><th>Время</th></tr>
-    
-  
-            
 
-        </tr>
+    <%= ((string)Context.Items["task"]) %>
     
-</table>
-
 
 </body>
 </html>

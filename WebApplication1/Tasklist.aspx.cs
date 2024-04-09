@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using Npgsql;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Design;
 using System.Configuration;
+using System.Web.UI.HtmlControls;
 
 
 
@@ -82,11 +83,9 @@ namespace WebApplication1
             task.city = this.city;
             task.trademark = this.trademark;
 
-            Table tab = new Table();
-            TableCell cell = new TableCell();
-            cell.Text = task.name;
-          
-          
+            task.SaveControlState();
+            // Вывод данных из базы на web страницу
+            HttpContext.Current.Items["task"] = task.name+" "+task.date+" "+task.tim+" "+task.city+" "+task.trademark;
 
 
 
