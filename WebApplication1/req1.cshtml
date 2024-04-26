@@ -110,10 +110,7 @@
             var smtpClient = new SmtpClient("smtp.yandex.ru");
 
 
-            smtpClient.Port = 465;
-            smtpClient.Credentials= new NetworkCredential("avsemykin2016@yandex.ru", "avs01871");
-            smtpClient.EnableSsl = true;
-            smtpClient.Send("avsemykin2016@yandex.ru", "avsemykin2016@yandex.ru", "test", "jjjjjj");
+
 
 
 
@@ -124,20 +121,19 @@
             NetworkCredential nk = new System.Net.NetworkCredential();
 
 
-
             nk.Domain = "yandex.ru";
-            nk.UserName = "@domain.com";
-            nk.Password = "password";
+            nk.UserName = "avsemykin2016";
+            nk.Password = "avs01871";
             int SmtpPort = 465;
             string SmtpServer = "smtp.yandex.com";
             string MailTitle = "";
             string SenderMail;
             string senderName = "Техническая поддержка";
             string recipientEmail;
-            string senderMail="";
+            string senderMail="avsemykin2016@yandex.ru";
             string mailBody="";
             string recipient1="";
-            string recipientName = "";
+            string recipientName = "mmmmmmmm";
 
             SmtpClient smtp = new SmtpClient();
 
@@ -146,19 +142,19 @@
             MailAddress sender = new System.Net.Mail.MailAddress(senderMail, senderName, System.Text.Encoding.UTF8);
 
 
-            MailAddress recipient = new System.Net.Mail.MailAddress(recipient1, recipientName, System.Text.Encoding.UTF8);
+            MailAddress recipient = new System.Net.Mail.MailAddress("avsemykin2016@yandex.ru");
 
             MailMessage em = new System.Net.Mail.MailMessage(sender, recipient);
 
 
             em.BodyEncoding = System.Text.Encoding.UTF8;
             em.SubjectEncoding = System.Text.Encoding.UTF8;
-
+            
             System.Net.Mail.AlternateView plainView = System.Net.Mail.AlternateView.CreateAlternateViewFromString(System.Text.RegularExpressions.Regex.Replace(mailBody, @"<(.|\n)*?>", string.Empty), null, MediaTypeNames.Text.Plain);
 
             System.Net.Mail.AlternateView htmlView = System.Net.Mail.AlternateView.CreateAlternateViewFromString(mailBody, null, MediaTypeNames.Text.Html);
 
-            em.AlternateViews.Clear();
+
             em.AlternateViews.Add(plainView);
             em.AlternateViews.Add(htmlView);
 
@@ -167,11 +163,12 @@
             SMTP.Port = SmtpPort;
             SMTP.EnableSsl = true;
 
+            MailMessage nn = em; 
 
 
             SMTP.Credentials = new System.Net.NetworkCredential();
 
-            SMTP.Send(em);
+            //SMTP.Send(em);
 
 
 
