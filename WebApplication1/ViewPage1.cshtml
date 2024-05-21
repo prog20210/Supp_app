@@ -1,0 +1,119 @@
+﻿<@Page Language="C#">
+    @using System.Web.UI.HtmlControls;
+
+    @using System;
+    @using System.Collections.Generic;
+    @using System.Linq;
+    @using System.Web;
+    @using System.Web.UI;
+    @using System.Web.UI.WebControls;
+    @using System.Configuration;
+    @using System.Data.SqlClient;
+    @using Npgsql;
+    @using Npgsql.EntityFrameworkCore.PostgreSQL.Design;
+    @using System.Configuration;
+    @using System.Web.UI.HtmlControls;
+
+
+    @{
+
+
+
+
+
+        Layout = null;
+        int i;
+                int n = 0;
+                string html;
+
+                string dat = "";
+
+                DateTime dt1;
+
+                dt1 = DateTime.Now;
+
+        dat = dt1.ToShortDateString();
+
+
+        for (i = 1; i < 60; i++)
+        {
+            n = i;
+
+        }
+            int t = 0;
+            int j = 3;
+
+            var tab1 = new HtmlTable();
+
+
+        for (t = 0; t <= j; t++)
+        {
+            HtmlTableRow r1 = new HtmlTableRow();
+            HtmlTableCell c1 = new HtmlTableCell();
+            r1.Cells.Add(c1);
+            tab1.Rows.Add(r1);
+
+        }
+
+        using (var sw = new StringWriter())
+        {
+            tab1.RenderControl(new HtmlTextWriter(sw));
+            html = sw.ToString();
+        }
+
+
+
+
+    }
+
+
+
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title></title>
+    </head>
+
+    <body>
+        <div>
+            <h2 align="center">Список задач на @dat г. </h2>
+
+            <table>
+
+                @{
+
+
+                    for (i = 0; i <= 3; i++)
+                    {
+
+
+                        <td>
+                        <tr>
+                            n = @i;
+                        </tr>  
+                        </td>
+
+
+
+                    }
+
+
+
+                }
+            </table>
+
+
+            Прошло @n  дней
+
+
+
+        </div>
+
+
+
+
+    </body>
+</html>

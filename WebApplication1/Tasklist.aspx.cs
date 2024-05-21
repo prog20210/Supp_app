@@ -16,27 +16,32 @@ using System.Web.UI.HtmlControls;
 namespace WebApplication1
 {
     public partial class Addtask : System.Web.UI.Page
-    {  public string name="";
+    { public string name = "";
         public string date;
-        public string  tim;
+        public string tim;
         public int id;
-       public  string email;
-       public  string fn, ln;
+        public string email;
+        public string fn, ln;
         public string otch;
         public string trademark;
         public string city;
         public string dep;
         public string dolz;
         public string tnumb;
+        int tt, i;
 
 
-
-        public string text="";
-        public string kat="";
-
+        public string text = "";
+        public string kat = "";
+    
         protected void Page_Load(object sender, EventArgs e)
         {
             ConnectionStringSettings constr;
+
+            Addtask task = new Addtask();
+            
+
+
             constr = ConfigurationManager.ConnectionStrings["con"];
             NpgsqlConnection con = new NpgsqlConnection(constr.ConnectionString);
             NpgsqlCommand com = con.CreateCommand();
@@ -53,7 +58,7 @@ namespace WebApplication1
                     NpgsqlDataReader rd = com.ExecuteReader();
                     if (rd.HasRows)
                     {
-
+                        
 
                         while (rd.Read())
                         {
@@ -67,6 +72,18 @@ namespace WebApplication1
                             dep = rd[7].ToString();
                             dolz = rd[8].ToString();
                             tnumb= rd[9].ToString();
+                            tt = tt + 1;
+                            // оформить объект задачи
+                   
+                           
+                        
+                          
+
+
+
+                            //
+
+
                         }
 
                     }
@@ -76,17 +93,25 @@ namespace WebApplication1
 
                 }
             }
-            Addtask task=new Addtask();
-            task.name = fn+" "+ ln;
-            task.date = DateTime.Now.Date.ToShortDateString();
-            task.tim =DateTime.Now.ToString(("HH:mm:ss"));
-            task.city = this.city;
-            task.trademark = this.trademark;
 
-            task.SaveControlState();
+            for (i=0;i<=tt;i++) {
+
+            
+
             // Вывод данных из базы на web страницу
+
             HttpContext.Current.Items["task"] = task.name+" "+task.date+" "+task.tim+" "+task.city+" "+task.trademark;
 
+               
+
+                Context.Response.Write(task.name + " " + task.date + " " + task.tim + " " + task.city + " " + task.trademark);
+             
+               
+
+            }
+
+            
+            
 
 
 

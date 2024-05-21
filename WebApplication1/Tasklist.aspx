@@ -122,7 +122,14 @@
 <body>
 <h2>Список задач на <%: DateTime.Now.Date.ToShortDateString() %> г. </h2>
 
-    <%= ((string)Context.Items["task"]) %>
+<%  
+        
+  
+    
+    
+    
+    %> 
+
     
 
 </body>
