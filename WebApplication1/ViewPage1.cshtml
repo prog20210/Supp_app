@@ -13,7 +13,7 @@
     @using Npgsql.EntityFrameworkCore.PostgreSQL.Design;
     @using System.Configuration;
     @using System.Web.UI.HtmlControls;
-
+  
 
     @{
 
@@ -23,14 +23,14 @@
 
         Layout = null;
         int i;
-                int n = 0;
-                string html;
+        int n = 0;
+        string html;
 
-                string dat = "";
+        string dat = "";
 
-                DateTime dt1;
+        DateTime dt1;
 
-                dt1 = DateTime.Now;
+        dt1 = DateTime.Now;
 
         dat = dt1.ToShortDateString();
 
@@ -40,10 +40,10 @@
             n = i;
 
         }
-            int t = 0;
-            int j = 3;
+        int t = 0;
+        int j = 3;
 
-            var tab1 = new HtmlTable();
+        var tab1 = new HtmlTable();
 
 
         for (t = 0; t <= j; t++)
@@ -60,10 +60,8 @@
             tab1.RenderControl(new HtmlTextWriter(sw));
             html = sw.ToString();
         }
-
-
-
-
+        
+      
     }
 
 
@@ -75,43 +73,46 @@
     <head>
         <meta name="viewport" content="width=device-width" />
         <title></title>
+
     </head>
 
     <body>
         <div>
-            <h2 align="center">Список задач на @dat г. </h2>
+            <link rel="stylesheet" href="main.css">
 
-            <table>
+            <h2 align="center">Список обращений на @dat г. </h2>
 
-                @{
+            <table class="table table-bordered  table-hover">
+                <td>
+                    <p align="center"> Дата </p>
+                </td>
 
-
-                    for (i = 0; i <= 3; i++)
-                    {
-
-
-                        <td>
-                        <tr>
-                            n = @i;
-                        </tr>  
-                        </td>
+                <td>
+                    <p align="center"> Время </p>
+                </td>
 
 
 
-                    }
+                <td>
+                    <p align="center"> ФИО</p>
+                </td>
+
+                <td>
+                    <p align="center"> Подразделение</p>
+                </td>
 
 
 
-                }
+                <td>
+                    <p align="center"> Статус обращения </p>   
+                </td>
+
             </table>
-
-
-            Прошло @n  дней
-
+            
+       <p align="center"> <button> Выгрузить отчет </button> </p>
 
 
         </div>
-
 
 
 
