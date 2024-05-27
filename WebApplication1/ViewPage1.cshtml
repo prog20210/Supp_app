@@ -13,21 +13,22 @@
     @using Npgsql.EntityFrameworkCore.PostgreSQL.Design;
     @using System.Configuration;
     @using System.Web.UI.HtmlControls;
-  
-
+    @using System.Data;
+    @using System.Web.Mvc.Html;
+    @using ClosedXML
     @{
-
-
-
 
 
         Layout = null;
         int i;
         int n = 0;
         string html;
-
+        int nz = 0;
         string dat = "";
+        NpgsqlDataReader rd;
 
+
+        StringWriter sw = new StringWriter();
         DateTime dt1;
 
         dt1 = DateTime.Now;
@@ -46,35 +47,78 @@
         var tab1 = new HtmlTable();
 
 
-        for (t = 0; t <= j; t++)
+        ConnectionStringSettings constr;
+        constr = ConfigurationManager.ConnectionStrings["con"];
+
+
+        NpgsqlConnection con = new NpgsqlConnection();
+
+
+        con.ConnectionString = constr.ToString();
+
+        //"Server = 127.0.0.1; Port = 5433; Database = sup; User Id = postgres; Password =12345";
+
+
+
+        con.Open();
+        int num;
+        int numbn;
+        NpgsqlCommand com = con.CreateCommand();
+        com.CommandText = "select * from req";
+
+        try
+        {
+
+
+            com.CommandText = "select COUNT(*) from req";
+
+            nz = Convert.ToInt16(com.ExecuteScalar());
+
+            rd = com.ExecuteReader();
+
+
+
+
+        }
+
+        catch
+        {
+
+        }
+
+
+        for (t = 0; t <= nz; t++)
         {
             HtmlTableRow r1 = new HtmlTableRow();
+
             HtmlTableCell c1 = new HtmlTableCell();
+            HtmlTableCell c2 = new HtmlTableCell();
+
+
+            c1.InnerHtml = "<b>hhhhhh</b>";
+            c2.InnerHtml = "<b>hhhhhh</b>";
+
+
             r1.Cells.Add(c1);
-            tab1.Rows.Add(r1);
+            r1.Cells.Add(c2);
+
+
 
         }
 
-        using (var sw = new StringWriter())
+        using (sw)
         {
-            tab1.RenderControl(new HtmlTextWriter(sw));
-            html = sw.ToString();
+
+
+
+
         }
-        
-      
-    }
 
+        html = sw.ToString();
 
+        }
 
-
-    <!DOCTYPE html>
-
-    <html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title></title>
-
-    </head>
+   
 
     <body>
         <div>
@@ -82,9 +126,16 @@
 
             <h2 align="center">Список обращений на @dat г. </h2>
 
-            <table class="table table-bordered  table-hover">
+
+         
+
+            <table name="html" class="table table-bordered  table-hover">
+
+
+                <thead>
                 <td>
                     <p align="center"> Дата </p>
+
                 </td>
 
                 <td>
@@ -104,12 +155,71 @@
 
 
                 <td>
-                    <p align="center"> Статус обращения </p>   
-                </td>
+                    <p align="center"> Статус обращения </p>
 
-            </table>
-            
-       <p align="center"> <button> Выгрузить отчет </button> </p>
+
+
+                </td>
+                </thead>
+
+                <tbody>
+
+
+
+                    @{
+// цикл по строкам 
+                        for (int h = 0; h <= nz; h++)
+                        {
+                    <tr></tr> 
+
+
+
+
+                    // цикл по столбцам 
+                            for (i = 0; i <= 4; i++)
+                            {
+                          
+
+
+
+
+
+
+                        <td> 
+                           
+                     </td>
+
+                                }
+                            }
+                        }
+                    </tbody>
+
+                        
+                </table>
+
+
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <table name="html" class="table table-bordered  table-hover">
+
+               
+
+            <p align="center"> <button> Выгрузить отчет </button> </p>
 
 
         </div>
@@ -117,4 +227,4 @@
 
 
     </body>
-</html>
+    </html>
