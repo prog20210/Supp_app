@@ -16,6 +16,9 @@
     @using System.Data;
     @using System.Web.Mvc.Html;
     @using ClosedXML
+    
+    
+
     @{
 
 
@@ -25,7 +28,7 @@
         string html;
         int nz = 0;
         string dat = "";
-        NpgsqlDataReader rd;
+      NpgsqlDataReader rd;
 
 
         StringWriter sw = new StringWriter();
@@ -74,7 +77,23 @@
 
             nz = Convert.ToInt16(com.ExecuteScalar());
 
+            com.CommandText = "select * from req";
+
             rd = com.ExecuteReader();
+
+            // Доработать цикл чтения и заполнения таблицы
+            if (rd.HasRows)
+            {
+
+
+
+                while (rd.Read())
+                {
+
+
+
+                }
+            }
 
         }
 
@@ -84,7 +103,7 @@
         }
 
 
-       
+
 
         using (sw)
         {
@@ -95,9 +114,9 @@
         }
 
 
-        }
+    }
 
-   
+
 
     <body>
         <div>
@@ -143,37 +162,73 @@
 
 
                     @{
-                        //добавление
+                        //добавление в тело таблицы
 
-                        for (i = 0; i <= nz-1; i++)
-                        {<tr></tr>
-                       
-                        // цикл по строкам
-                        for (int h = 0; h <= 4; h++)  //nz- к-во строк
+
+
+
+
+
+
+
+
+
+
+                        /////////////////////////////////////
+                        for (i = 0; i <= nz - 1; i++)
                         {
-                            <td align="center">
+                           
 
-                                nnnnnnnnnnnnnnn
+                            // цикл по строкам
+                            for (int h = 1; h <= 4; h++)  //nz- к-во строк
+                            {
+                    <tr>
+                        <td align="center">
 
-                            </td>
+                          
+
+                        </td>
+
+                        <td align="center">
+
+                            fffffffff
+
+                        </td>
+
+
+
+                        <td align="center">
+
+                            dddddddd
+
+                        </td>
+
+
+                        <td align="center">
+
+                            pppppppppppppppppp
+
+                        </td>
+
+
+                        <td align="center">
+
+                            ghghghhghhhjjjjikk
+
+                        </td>
+
+
+
+
+
+                    </tr>
+
                         }
 
-                        
-
-
-
-
-                    }
-
-
-
-
-
-
 
                     }
                     }
-                    }
+                    
                     </tbody>
 
 
