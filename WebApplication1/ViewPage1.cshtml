@@ -76,9 +76,6 @@
 
             rd = com.ExecuteReader();
 
-
-
-
         }
 
         catch
@@ -87,24 +84,7 @@
         }
 
 
-        for (t = 0; t <= nz; t++)
-        {
-            HtmlTableRow r1 = new HtmlTableRow();
-
-            HtmlTableCell c1 = new HtmlTableCell();
-            HtmlTableCell c2 = new HtmlTableCell();
-
-
-            c1.InnerHtml = "<b>hhhhhh</b>";
-            c2.InnerHtml = "<b>hhhhhh</b>";
-
-
-            r1.Cells.Add(c1);
-            r1.Cells.Add(c2);
-
-
-
-        }
+       
 
         using (sw)
         {
@@ -114,7 +94,6 @@
 
         }
 
-        html = sw.ToString();
 
         }
 
@@ -130,8 +109,6 @@
          
 
             <table name="html" class="table table-bordered  table-hover">
-
-
                 <thead>
                 <td>
                     <p align="center"> Дата </p>
@@ -158,7 +135,6 @@
                     <p align="center"> Статус обращения </p>
 
 
-
                 </td>
                 </thead>
 
@@ -167,34 +143,40 @@
 
 
                     @{
-// цикл по строкам 
-                        for (int h = 0; h <= nz; h++)
+                        //добавление
+
+                        for (i = 0; i <= nz-1; i++)
+                        {<tr></tr>
+                       
+                        // цикл по строкам
+                        for (int h = 0; h <= 4; h++)  //nz- к-во строк
                         {
-                    <tr></tr> 
+                            <td align="center">
 
+                                nnnnnnnnnnnnnnn
 
-
-
-                    // цикл по столбцам 
-                            for (i = 0; i <= 4; i++)
-                            {
-                          
-
-
-
-
-
-
-                        <td> 
-                           
-                     </td>
-
-                                }
-                            }
+                            </td>
                         }
-                    </tbody>
 
                         
+
+
+
+
+                    }
+
+
+
+
+
+
+
+                    }
+                    }
+                    }
+                    </tbody>
+
+
                 </table>
 
 
