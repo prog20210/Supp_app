@@ -28,13 +28,18 @@
         string html;
         int nz = 0;
         string dat = "";
-      NpgsqlDataReader rd;
-
-
+        string year;
+        string[] dt;
+        string[] tim;
+        string t1;
         StringWriter sw = new StringWriter();
         DateTime dt1;
 
         dt1 = DateTime.Now;
+
+        t1 = dt1.ToString();
+
+        tim = t1.Split(' ');
 
         dat = dt1.ToShortDateString();
 
@@ -79,7 +84,7 @@
 
             com.CommandText = "select * from req";
 
-            rd = com.ExecuteReader();
+            NpgsqlDataReader rd = com.ExecuteReader();
 
             // Доработать цикл чтения и заполнения таблицы
             if (rd.HasRows)
@@ -133,21 +138,26 @@
                     <p align="center"> Дата </p>
 
                 </td>
-
+                
                 <td>
                     <p align="center"> Время </p>
                 </td>
 
-
+                <td>
+                    <p align="center"> Год </p>
+                </td>
 
                 <td>
                     <p align="center"> ФИО</p>
                 </td>
-
+                
                 <td>
                     <p align="center"> Подразделение</p>
                 </td>
 
+                <td>
+                    <p align="center"> Краткое описание</p>
+                </td>
 
 
                 <td>
@@ -165,41 +175,47 @@
                         //добавление в тело таблицы
 
 
-
-
-
-
-
-
-
-
-
                         /////////////////////////////////////
-                        for (i = 0; i <= nz - 1; i++)
+                        for (i = 0; i <= nz; i++)
                         {
-                           
+
 
                             // цикл по строкам
-                            for (int h = 1; h <= 4; h++)  //nz- к-во строк
+                            for (int h = 1; h <= 6; h++)  //nz- к-во строк
                             {
                     <tr>
                         <td align="center">
 
-                          
+                            @dat
 
                         </td>
 
                         <td align="center">
 
-                            fffffffff
+                            @tim[1]
+
+                        </td>
+
+                        <td align="center">
+                            @{
+
+                                dt = @dat.Split('.');
+
+                                year = dt[2];
+
+
+                            }
+
+                            @year
 
                         </td>
 
 
 
+
                         <td align="center">
 
-                            dddddddd
+                            j
 
                         </td>
 
@@ -209,6 +225,7 @@
                             pppppppppppppppppp
 
                         </td>
+
 
 
                         <td align="center">
@@ -221,18 +238,35 @@
 
 
 
+                        <td align="center">
+
+                           stob
+
+                        </td>
+
+
+
+
+
+
+
+
+
                     </tr>
 
+
+                               
+
+                            }
+
+
                         }
-
-
                     }
-                    }
-                    
-                    </tbody>
+
+                </tbody>
 
 
-                </table>
+            </table>
 
 
 
