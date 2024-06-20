@@ -16,7 +16,7 @@
     @using System.Data;
     @using System.Web.Mvc.Html;
     @using ClosedXML
-    @using Aspose.Html
+    
     
 
     @{
@@ -86,8 +86,6 @@
 
             NpgsqlDataReader rd = com.ExecuteReader();
 
-
-
             // Доработать цикл чтения и заполнения таблицы
             if (rd.HasRows)
             {
@@ -101,44 +99,6 @@
 
                 }
             }
-
-            // создаем таблицу динамически. Дописать процедуру создания 
-
-            var doc = new HTMLDocument();
-
-            var body = doc.Body;
-
-            var cols = 6;
-            var rows = nz;
-
-
-            var isFirstRowHeader = false;
-
-            // Создать элемент таблицы
-            var table = doc.CreateElement("table");
-
-            // Создать тело таблицы
-            var tbody = doc.CreateElement("tbody");
-            table.AppendChild(tbody);
-
-            if (isFirstRowHeader)
-            {
-                var tr = doc.CreateElement("tr");
-                tbody.AppendChild(tr);
-
-                // Создание столбцов заголовков таблицы 
-                for (int k = 1; j < cols + 1; k++)
-                {
-                    var th = doc.CreateElement("th");
-
-                    // Создание заголовков  в таблице
-                    
-                }
-
-            }
-
-
-
 
         }
 
@@ -212,14 +172,17 @@
 
 
                     @{
-                        
-                        
                         //добавление в тело таблицы
 
-                        var document = new HTMLDocument();
+                        constr = ConfigurationManager.ConnectionStrings["con"];
 
 
+                        
 
+
+                        con.ConnectionString = constr.ToString();
+
+                        NpgsqlDataReader rd1 = com.ExecuteReader();
 
 
                         /////////////////////////////////////
@@ -233,7 +196,7 @@
                     <tr>
                         <td align="center">
 
-                            @dat
+                            @rd1[0].ToString()
 
                         </td>
 
@@ -246,63 +209,69 @@
                         <td align="center">
                             @{
 
-                                dt = @dat.Split('.');
+                                    dt = @dat.Split('.');
 
-                                year = dt[2];
-
-
-                            }
-
-                            @year
-
-                        </td>
+                                    year = dt[2];
 
 
+                                }
 
+                                @year
 
-                        <td align="center">
-
-                            j
-
-                        </td>
-
-
-                        <td align="center">
-
-                            pppppppppppppppppp
-
-                        </td>
-
-
-
-                        <td align="center">
-
-                            ghghghhghhhjjjjikk
-
-                        </td>
+                            </td>
+    
 
 
 
 
+                            <td align="center">
 
-                        <td align="center">
+                                j
 
-                           stob
+                            </td>
+    
 
-                        </td>
+
+                            <td align="center">
+
+                                pppppppppppppppppp
+
+                            </td>
+    
+
+
+
+                            <td align="center">
+
+                                ghghghhghhhjjjjikk
+
+                            </td>
+    
 
 
 
 
 
+                            <td align="center">
+
+                               stob
+
+                            </td>
+    
 
 
 
 
-                    </tr>
 
 
-                               
+
+
+
+                        </tr>
+
+
+
+
 
                             }
 

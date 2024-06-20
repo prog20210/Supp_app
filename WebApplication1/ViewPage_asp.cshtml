@@ -17,7 +17,24 @@
     @using System.Web.Mvc.Html;
     @using ClosedXML
     @using Aspose.Html
-    
+
+
+
+    <select id="BorderSelect"
+            runat="server">
+
+        <option value="0">0</option>
+        <option value="1" selected="selected">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+
+    </select>
+
+
+
+
 
     @{
 
@@ -86,59 +103,19 @@
 
             NpgsqlDataReader rd = com.ExecuteReader();
 
-
-
             // Доработать цикл чтения и заполнения таблицы
             if (rd.HasRows)
             {
+                
 
 
-
-                while (rd.Read())
+            while (rd.Read())
                 {
 
 
 
                 }
             }
-
-            // создаем таблицу динамически. Дописать процедуру создания 
-
-            var doc = new HTMLDocument();
-
-            var body = doc.Body;
-
-            var cols = 6;
-            var rows = nz;
-
-
-            var isFirstRowHeader = false;
-
-            // Создать элемент таблицы
-            var table = doc.CreateElement("table");
-
-            // Создать тело таблицы
-            var tbody = doc.CreateElement("tbody");
-            table.AppendChild(tbody);
-
-            if (isFirstRowHeader)
-            {
-                var tr = doc.CreateElement("tr");
-                tbody.AppendChild(tr);
-
-                // Создание столбцов заголовков таблицы 
-                for (int k = 1; j < cols + 1; k++)
-                {
-                    var th = doc.CreateElement("th");
-
-                    // Создание заголовков  в таблице
-                    
-                }
-
-            }
-
-
-
 
         }
 
@@ -170,7 +147,7 @@
             <h2 align="center">Список обращений на @dat г. </h2>
 
 
-         
+
 
             <table name="html" class="table table-bordered  table-hover">
                 <thead>
@@ -178,7 +155,7 @@
                     <p align="center"> Дата </p>
 
                 </td>
-                
+
                 <td>
                     <p align="center"> Время </p>
                 </td>
@@ -190,7 +167,7 @@
                 <td>
                     <p align="center"> ФИО</p>
                 </td>
-                
+
                 <td>
                     <p align="center"> Подразделение</p>
                 </td>
@@ -211,12 +188,14 @@
 
 
 
+
+
+
+
                     @{
-                        
-                        
                         //добавление в тело таблицы
 
-                        var document = new HTMLDocument();
+
 
 
 
@@ -230,68 +209,66 @@
                             // цикл по строкам
                             for (int h = 1; h <= 6; h++)  //nz- к-во строк
                             {
-                    <tr>
-                        <td align="center">
+                                <tr>
+                                    <td align="center">
 
-                            @dat
+                                        @dat
 
-                        </td>
+                                    </td>
 
-                        <td align="center">
+                                    <td align="center">
 
-                            @tim[1]
+                                        @tim[i]
 
-                        </td>
+                                    </td>
 
-                        <td align="center">
-                            @{
+                                    <td align="center">
+                                        @{
 
-                                dt = @dat.Split('.');
+                                            dt = @dat.Split('.');
 
-                                year = dt[2];
-
-
-                            }
-
-                            @year
-
-                        </td>
+                                            year = dt[2];
 
 
+                                        }
 
+                                        @year
 
-                        <td align="center">
-
-                            j
-
-                        </td>
-
-
-                        <td align="center">
-
-                            pppppppppppppppppp
-
-                        </td>
-
-
-
-                        <td align="center">
-
-                            ghghghhghhhjjjjikk
-
-                        </td>
+                                    </td>
 
 
 
 
+                                    <td align="center">
 
-                        <td align="center">
+                                        j
 
-                           stob
-
-                        </td>
+                                    </td>
 
 
+                                    <td align="center">
+
+                                        pppppppppppppppppp
+
+                                    </td>
+
+
+
+                                    <td align="center">
+
+                                        ghghghhghhhjjjjikk
+
+                                    </td>
+
+
+
+
+
+                                    <td align="center">
+
+                                        stob
+
+                                    </td>
 
 
 
@@ -299,10 +276,12 @@
 
 
 
-                    </tr>
 
 
-                               
+                                </tr>
+
+
+
 
                             }
 
@@ -318,7 +297,7 @@
 
 
 
-       
+
 
 
 
@@ -335,9 +314,9 @@
 
             <table name="html" class="table table-bordered  table-hover">
 
-               
 
-            <p align="center"> <button> Выгрузить отчет </button> </p>
+
+                <p align="center"> <button> Выгрузить отчет </button> </p>
 
 
         </div>
