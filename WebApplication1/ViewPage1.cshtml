@@ -34,6 +34,9 @@
         string t1;
         StringWriter sw = new StringWriter();
         DateTime dt1;
+        string[] podp=new String[1];
+        int t3 = 0;
+
 
         dt1 = DateTime.Now;
 
@@ -77,14 +80,19 @@
         try
         {
 
+            // 
 
             com.CommandText = "select COUNT(*) from req";
 
+            // получить текущее количество столбцов в таблице из БД
             nz = Convert.ToInt16(com.ExecuteScalar());
+
 
             com.CommandText = "select * from req";
 
             NpgsqlDataReader rd = com.ExecuteReader();
+
+
 
 
 
@@ -102,40 +110,133 @@
                 }
             }
 
+            rd.Close();
+
+
             // создаем таблицу динамически. Дописать процедуру создания. Разобраться почему зависало 
 
-            var doc = new HTMLDocument();
-
-            var body = doc.Body;
-
-            var cols = 6;
-            var rows = nz;
-
-
-            var isFirstRowHeader = false;
-
-            // Создать элемент таблицы
-            var table = doc.CreateElement("table");
-
-            // Создать тело таблицы
-            var tbody = doc.CreateElement("tbody");
-            table.AppendChild(tbody);
-
-            if (isFirstRowHeader)
+            using (HTMLDocument doc = new HTMLDocument())
             {
+                var body = doc.Body;
+
+                var cols = 6;
+                var rows = nz;
+
+                /// заголовок таблицы. Получить  
+
+
+                ////
+
+                var tab2 = doc.GetElementsByTagName("html").First();
+                var tbody = doc.CreateElement("tbody");
+                tab2.AppendChild(tbody);
+
+
+
+
                 var tr = doc.CreateElement("tr");
                 tbody.AppendChild(tr);
 
-                // Создание столбцов заголовков таблицы 
-                for (int k = 1; j < cols + 1; k++)
-                {
-                    var th = doc.CreateElement("th");
+                // продолжить писать шапку таблицы. Вставка ячеек
+                
+                var isFirstRowHeader = true;
 
-                    // Создание заголовков  в таблице
-                    
+               
+
+                if (isFirstRowHeader)
+                {
+
+                    com.CommandText = "select * from otcols order by id asc";
+                    string namcol;
+
+                    NpgsqlDataReader rd2 = com.ExecuteReader();
+
+
+
+
+
+                    while (rd2.Read())
+                    {
+                        namcol = "";
+
+                        tr = doc.CreateElement("tr");
+                        tbody.AppendChild(tr);
+
+                        var th = doc.CreateElement("th");
+
+
+                        namcol = rd[t].ToString();
+
+                        var title = doc.CreateTextNode(namcol);
+                        th.AppendChild(title);
+                        tr.AppendChild(th);
+
+                        t3 = t3 + 1; //  итоговое число колонок 
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
                 }
 
+
+
             }
+
+
+
+
+
+
+            /// инициализация читалки и чтение из базы заголовков таблицы 
+
+
+
+
+            // Получить элемент таблицы. Если переменная пустая - NULL, создать таблицу
+
+
+
+
+
+            //////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // Создание столбцов заголовков таблицы 
+            //             for (int k = 1; j < cols + 1; k++)
+            //         {
+
+
+            // Создание заголовков  в таблице
+
+
+
+            //         }
+
+
 
 
 
