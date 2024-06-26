@@ -132,30 +132,50 @@
                 tab2.AppendChild(tbody);
 
 
-
-
                 var tr = doc.CreateElement("tr");
                 tbody.AppendChild(tr);
 
                 // продолжить писать шапку таблицы. Вставка ячеек
-                
+
                 var isFirstRowHeader = true;
 
-               
 
                 if (isFirstRowHeader)
                 {
 
-                    com.CommandText = "select * from otcols order by id asc";
+                    // неправильно обрабатывается запрос посмотреть 
+
+                    NpgsqlCommand com2 = con.CreateCommand();
+
+
+
+                    NpgsqlConnection con1 = new NpgsqlConnection();
+
+
+                    con1.ConnectionString = constr.ToString();
+
+                    con1.Open();
+
+
+                    int nzap = 0;
+
+                    com2.CommandText = "Select count(zagl) from otcols";
+
+                    nzap=Convert.ToInt32(com2.ExecuteScalar());
+
+
+                    com2.CommandText = "select zagl from otcols order by id asc";
                     string namcol;
 
-                    NpgsqlDataReader rd2 = com.ExecuteReader();
+                    NpgsqlDataReader rd2 = com2.ExecuteReader();
 
 
 
+                    t3 = 0;
+
+                    for(t3=0;t3<=nzap;t3++)
 
 
-                    while (rd2.Read())
                     {
                         namcol = "";
 
@@ -165,13 +185,16 @@
                         var th = doc.CreateElement("th");
 
 
-                        namcol = rd[t].ToString();
+                        namcol = rd2[t3].ToString();
+
 
                         var title = doc.CreateTextNode(namcol);
                         th.AppendChild(title);
                         tr.AppendChild(th);
 
-                        t3 = t3 + 1; //  итоговое число колонок 
+                        t3 = t3 + 1; //  итоговое число колонок
+                        rd2.NextResult();
+
                     }
 
 
