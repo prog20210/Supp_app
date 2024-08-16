@@ -123,7 +123,7 @@
 <h2>Список задач на <%: DateTime.Now.Date.ToShortDateString() %> г. </h2>
 
 <%  
-        
+         Response.Write ("<b>jjjjjjj</b> ");  //Пример возвращаемого ответа   
   
     
     

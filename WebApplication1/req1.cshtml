@@ -6,18 +6,18 @@
 @using System.Diagnostics;
 @using System.Management.Automation;
 @using System.Web;
-@using System.Net.Mail;
-@using System.Net.Mime;
 @using System.Threading;
 @using System.ComponentModel;
 @using System.Text;
 @using System.Net;
-
+@using MailKit.Net.Smtp;
+@using MailKit;
+@using MimeKit;
 
 @{
 
     <link rel="stylesheet" href="main.css">
-    
+
 
     if (IsPost) // Если входящий запрос
     {
@@ -41,16 +41,18 @@
         string tnumb = Request.Form["tnumb"];
         string from = "";
         string to = "";
-        string subj="";
+        string subj = "";
         string body = "";
         DateTime dt = DateTime.Now;
         string[] dats = dt.GetDateTimeFormats();
 
 
+       
         string dattim = dats[46].ToString().Trim();
         string[] dat = dattim.Split(' ');
         string dt1 = dat[0].ToString().Trim();
         string tim = dat[1].ToString().Trim();
+
 
 
 
@@ -60,6 +62,7 @@
         ConnectionStringSettings constr;
         constr = ConfigurationManager.ConnectionStrings["con"];
 
+     
 
         NpgsqlConnection con = new NpgsqlConnection();
 
@@ -105,8 +108,7 @@
             from = "avsemykin2016@yandex.ru";
             to = "avsemykin2016@yandex.ru";
 
-            var msg = new MailMessage(from, to, subj, body);
-            var smtpClient = new SmtpClient("smtp.yandex.ru");
+
 
 
 
@@ -115,7 +117,7 @@
 
             NetworkCredential nk = new System.Net.NetworkCredential();
 
-
+            bool enableSsl = true;
             nk.Domain = "yandex.ru";
             nk.UserName = "avsemykin2016";
             nk.Password = "avs01871";
@@ -125,49 +127,60 @@
             string SenderMail;
             string senderName = "Техническая поддержка";
             string recipientEmail;
-            string senderMail="avsemykin2016@yandex.ru";
-            string mailBody="";
-            string recipient1="";
+          
+            string mailBody = "";
+            string recipient1 = "";
             string recipientName = "mmmmmmmm";
 
             SmtpClient smtp = new SmtpClient();
 
-            senderMail = "avsemykin2016@yandex.ru";
+
             senderName = "ggggg";
-            MailAddress sender = new System.Net.Mail.MailAddress(senderMail, senderName, System.Text.Encoding.UTF8);
 
 
-            MailAddress recipient = new System.Net.Mail.MailAddress("avsemykin2016@yandex.ru");
-
-            MailMessage em = new System.Net.Mail.MailMessage(sender, recipient);
-
-
-            em.BodyEncoding = System.Text.Encoding.UTF8;
-            em.SubjectEncoding = System.Text.Encoding.UTF8;
             
-            System.Net.Mail.AlternateView plainView = System.Net.Mail.AlternateView.CreateAlternateViewFromString(System.Text.RegularExpressions.Regex.Replace(mailBody, @"<(.|\n)*?>", string.Empty), null, MediaTypeNames.Text.Plain);
-
-            System.Net.Mail.AlternateView htmlView = System.Net.Mail.AlternateView.CreateAlternateViewFromString(mailBody, null, MediaTypeNames.Text.Html);
+             
 
 
-            em.AlternateViews.Add(plainView);
-            em.AlternateViews.Add(htmlView);
+            // обработка почты новая процедура 
 
-            System.Net.Mail.SmtpClient SMTP = new System.Net.Mail.SmtpClient();
-            SMTP.Host = SmtpServer;
-            SMTP.Port = SmtpPort;
-            SMTP.EnableSsl = true;
+            var emailMessage = new MimeMessage();
 
-            MailMessage nn = em; 
+            emailMessage.From.Add(new MailboxAddress("Администрация сайта", from));
+            emailMessage.To.Add(new MailboxAddress("jjjj", to));
+            emailMessage.Subject = "kkkkkkkkk";
+            emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html);
+
+            var message = new MimeKit.MimeMessage();
+            message.From.Add(new MimeKit.MailboxAddress("from_name", from)); // replace from_name with real name
+            message.To.Add(new MimeKit.MailboxAddress("to_name", to)); // replace to_name with real name
+            message.Subject = "This is an email";
+            message.Body = new MimeKit.TextPart("plain")
+            {
+                Text = @"This is from MailKit.Net.Smtp using C sharp with SMTP authentication."
+            };
 
 
-            SMTP.Credentials = new System.Net.NetworkCredential();
 
-            //SMTP.Send(em);
+            using (var client = new SmtpClient())
+            {
+
+                client.Connect("smtp.yandex.ru", 465,true);
 
 
+                try
+                {
+                    client.Authenticate("avsemykin2016@yandex.ru", "avs0187");
+                }
+                catch
+                {
 
+                }
 
+                client.Send(emailMessage);
+
+                client.Disconnect(true);
+            }
 
 
 

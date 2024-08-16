@@ -5,7 +5,7 @@
     <h3>Контактная информация</h3>
     <address>
         
-        Связаться с отделом поддержки URT можно по <a href = "mailto: help@universalretail.ru">адресу</a>
+        Связаться с отделом поддержки URT можно по адресу <a href = "mailto: help@universalretail.ru">help@universalretail.ru</a>
         Или заполнив соответствующую <a href ="http://localhost:50677/request">форму</a>
     </address>
 
