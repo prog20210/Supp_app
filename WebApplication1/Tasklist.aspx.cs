@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
 using Npgsql;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Design;
 using System.Configuration;
 using System.Web.UI.HtmlControls;
 

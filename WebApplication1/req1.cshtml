@@ -1,5 +1,5 @@
 ﻿@using Npgsql;
-@using Npgsql.EntityFrameworkCore.PostgreSQL.Design
+@using Npgsql.EntityFrameworkCore.PostgreSQL.Design;
 @using System.Globalization;
 
 @using System.Configuration;
@@ -63,7 +63,7 @@
 
         NpgsqlConnection con = new NpgsqlConnection();
 
-        //con.ConnectionString = constr[0];
+        //con.ConnectionString = constr[0]
 
 
         con.ConnectionString = constr.ToString();

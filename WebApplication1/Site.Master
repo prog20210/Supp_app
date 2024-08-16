@@ -58,7 +58,7 @@
 
                         <li><a runat="server" href="~/request.aspx">Оставить запрос в техподдержку</a></li>
                         
-                        <li><a runat="server" href="~/knbase.aspx">База знаний и инструкции </a></li>
+                        <li><a runat="server" href="~/knbase.cshtml">База знаний и инструкции </a></li>
 
 
                     </ul>
