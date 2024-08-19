@@ -125,105 +125,22 @@
 <h2>Список задач на <%: DateTime.Now.Date.ToShortDateString() %> г. </h2>
 
 <%  
-    using ClosedXML;
-    using Aspose.Html;
-
-       using (HTMLDocument doc = new HTMLDocument())
-    {
-        var body = doc.Body;
-
-        var cols = 6;
-        var rows = nz;
-
-        /// заголовок таблицы. Получить  
+   
 
 
-        ////
+        Context.Response.Write("mmmmmmmmmmmmmmmmmmmm");
 
-        var tab2 = doc.GetElementsByTagName("html").First();
-        var tbody = doc.CreateElement("tbody");
-        tab2.AppendChild(tbody);
-
-
-        var tr = doc.CreateElement("tr");
-        tbody.AppendChild(tr);
-
-        // продолжить писать шапку таблицы. Вставка ячеек
-
-        var isFirstRowHeader = true;
-
-
-        if (isFirstRowHeader)
-        {
-
-            // неправильно обрабатывается запрос посмотреть 
-
-            NpgsqlCommand com2 = con.CreateCommand();
-
-
-
-            NpgsqlConnection con1 = new NpgsqlConnection();
-
-
-            con1.ConnectionString = constr.ToString();
-
-            con1.Open();
-
-
-            int nzap = 0;
-
-            com2.CommandText = "Select count(zagl) from otcols";
-
-            nzap=Convert.ToInt32(com2.ExecuteScalar());
-
-
-            com2.CommandText = "select zagl from otcols order by id asc";
-            string namcol;
-
-            NpgsqlDataReader rd2 = com2.ExecuteReader();
-
-
-
-            t3 = 0;
-
-            for(t3=0;t3<=nzap;t3++)
-
-
-            {
-                namcol = "";
-
-                tr = doc.CreateElement("tr");
-                tbody.AppendChild(tr);
-
-                var th = doc.CreateElement("th");
-
-
-                namcol = rd2[t3].ToString();
-
-
-                var title = doc.CreateTextNode(namcol);
-                th.AppendChild(title);
-                tr.AppendChild(th);
-
-                t3 = t3 + 1; //  итоговое число колонок
-                rd2.NextResult();
-
-            }
+   
 
 
 
 
 
 
-
-
-
-
-
-
-
-            Response.Write ("<b>jjjjjjj</b> ");  //Пример возвращаемого ответа   
-
+            Response.Write ("<b>"+" nnnnnnnn   "+"</b> ");  //Пример возвращаемого ответа   
+                
+    //Response.Write()  
+    
 
 
 

@@ -749,6 +749,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\fillreq\" />
     <Folder Include="Views\hc\" />
   </ItemGroup>
   <ItemGroup>

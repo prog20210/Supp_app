@@ -5,12 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using JSPool;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 
 namespace WebApplication1
 {
     public partial class request : System.Web.UI.Page
     {
+        string email;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -18,9 +20,17 @@ namespace WebApplication1
 
 
 
+
         }
 
-       
+
+        public  string zap(string mail)
+        {
+            
+
+            return mail;
+
+        }
         
         
 

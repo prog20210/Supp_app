@@ -7,8 +7,10 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
 using Npgsql;
-using System.Configuration;
 using System.Web.UI.HtmlControls;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
 
 
 
@@ -57,35 +59,146 @@ namespace WebApplication1
                     NpgsqlDataReader rd = com.ExecuteReader();
                     if (rd.HasRows)
                     {
+                        ///  Подготовительная часть. Коннект 
+
+
+                        ///На стороне сервака 
+
+                        /// Парсить строку подключения из конфигурации 
+
+                        string[] cs = constr.ConnectionString.Split(';');
+
+                        // загрузить адрес и порт сервака из конфига.
+                        // вытащить адрес 
+
+                        string str = cs[0];
+                        string[] maddr = str.Split(' ');
+                        string addres = maddr[2];
+
+                        // Вытащить порт 
+
+                        string[] prt = cs[1].Split(' ');
+                        string full = addres + ":" + prt[3];
+
+                        int port = Convert.ToInt16(prt[3]);
+
+
+
+                        System.Net.IPAddress ipaddress = System.Net.IPAddress.Parse("127.0.0.1");
+
+                        string ip = Convert.ToString(ipaddress);
+
+                        // точка подключения 
+                        IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, port);
+
+                        // сокет 
+                         Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
                         
+                        //IPEndPoint endpoint = new IPEndPoint(addres, port);
+
+                        try
+                        {
+                            socket.ConnectAsync(ip, port);
+                           // socket.Connect(endPoint);
+                            socket.Bind(endPoint);
+                        }
+
+                        catch
+                        {
+                            Context.Response.Write("Ошибка сокета!");
+                        }
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        ///  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         while (rd.Read())
                         {
-                            int id = Convert.ToInt32(rd[0]);
-                            email = rd[1].ToString();
-                            fn = rd[2].ToString();
-                            ln = rd[3].ToString();
-                            otch = rd[4].ToString();
-                            trademark=rd[5].ToString();
-                            city = rd[6].ToString();
-                            dep = rd[7].ToString();
-                            dolz = rd[8].ToString();
-                            tnumb= rd[9].ToString();
-                            tt = tt + 1;
-                            // оформить объект задачи
-                   
+                            for (i = 0; i <= 9; i++)
+                            {
+                                int id = Convert.ToInt32(rd[0]);
+                                email = rd[1].ToString();
+                                fn = rd[2].ToString();
+                                ln = rd[3].ToString();
+                                otch = rd[4].ToString();
+                                trademark = rd[5].ToString();
+                                city = rd[6].ToString();
+                                dep = rd[7].ToString();
+                                dolz = rd[8].ToString();
+                                tnumb = rd[9].ToString();
+                                tt = tt + 1;
+                                // оформить объект задачи
+                            }
+
                            
-                        
-                          
 
 
 
-                            //
+
+
+
+
+
+
+
+
+
+
+
+
+                            //HttpContext.Current.Items["task"] = task.name + " " + task.date + " " + task.tim + " " + task.city + " " + task.trademark;
+
+
+
+                            // HttpContext.Current.Items["task"] = task.name + " " + task.date + " " + task.tim + " " + task.city + " " + task.trademark;
+
+
+
 
 
                         }
-
+                        ///////////Следующий результат/////////////////////
+                        rd.NextResult();
+                        ///
                     }
+                    
+
+
                 }
                 catch
                 {
@@ -95,11 +208,11 @@ namespace WebApplication1
 
             for (i=0;i<=tt;i++) {
 
+
+
+                // Вывод данных из базы на web страницу
+           
             
-
-            // Вывод данных из базы на web страницу
-
-            HttpContext.Current.Items["task"] = task.name+" "+task.date+" "+task.tim+" "+task.city+" "+task.trademark;
 
                
 

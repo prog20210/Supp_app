@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="req1.cshtml" runat="server" Inherits="WebApplication1.request" %>
 
+ 
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -119,6 +121,33 @@
 
 
 </style>
+
+              <script runat="server">
+
+
+    
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 
 
@@ -127,38 +156,12 @@
 <form action="/req1" method="post">
   <ul class="wrapper">
 
-<script type="text/javascript"  async>
+<script type="text/javascript" async>
 
+   
 
-    function autofill() {
+    
 
-        alert("kkkkkk");
-        const { Client } = require("pg")
-        const dotenv = require("dotenv")
-        dotenv.config()
-        const connectDb = async () => {
-            try {
-                const client = new Client({
-                    user: postgres;
-                    host: process.env.PGHOST,
-                    database: sup,
-                    password:12345,
-                    port: 5433
-                })
-
-                await client.connect()
-                const res = await client.query('SELECT * FROM some_table')
-                console.log(res)
-                await client.end()
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        connectDb()
-    }
-</script>
-
-     
 
 <li class="form-row">
         <label>E-Mail </label>
@@ -235,7 +238,7 @@
 
 
 <p align="center">
-<input type="button" class="butt" name="fill"  onclick= "autofill()" value="Заполнить" />
+    <input type="button" class="butt" name="fill" onclick="request_aspx" value="Заполнить" />
 </p>
 
 
