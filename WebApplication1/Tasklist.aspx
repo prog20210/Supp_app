@@ -126,16 +126,10 @@
 
 <%  
 
-
-
-    Context.Response.Write(Context.Request.UserAgent.ToString());
+    
  
-     
-
-
-
-
-
+    
+  
     Response.Write ("<b>"+" nnnnnnnn   "+"</b> ");  //Пример возвращаемого ответа   
 
     //Response.Write()  

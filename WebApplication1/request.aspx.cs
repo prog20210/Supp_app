@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using JSPool;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+ 
 
 
 namespace WebApplication1
@@ -16,7 +17,14 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            
+
+
+         
+
+
+
+
+                 
 
 
 

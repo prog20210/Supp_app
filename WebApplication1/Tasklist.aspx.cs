@@ -88,22 +88,38 @@ namespace WebApplication1
                         System.Net.IPAddress ipaddress = System.Net.IPAddress.Parse("127.0.0.1");
 
                         IPAddress[] ips = Dns.GetHostEntry(Dns.GetHostName()).AddressList;
-
-
-
                         // точка подключения 
                         IPEndPoint endPoint = new IPEndPoint(ipaddress, port);
 
-                        // сокет 
-                         Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-
-                        //IPEndPoint endpoint = new IPEndPoint(addres, port);
-
-
-
-                     //   IPEndPoint myEP = new IPEndPoint(ips, port);
                         Socket listeningSocket = new Socket(SocketType.Stream, ProtocolType.Tcp);
+
+                        AddressFamily fam= new AddressFamily();
+
+                        SocketAddress socketAddress = endPoint.Serialize();
+                    
+                    
+
+                        endPoint.Address.ToString();
+                        endPoint.Port = port;
+
+                   
+                        endPoint.Create(socketAddress); 
+                    
+                            
+                            
+                            
+                         
+
+
+//IPEndPoint endpoint = new IPEndPoint(addres, port);
+
+
+
+//   IPEndPoint myEP = new IPEndPoint(ips, port);
+
+
+
+                        
                         listeningSocket.Bind(endPoint);
                         listeningSocket.Listen(port);
                         Socket acceptedSocket = listeningSocket.Accept();
@@ -111,9 +127,12 @@ namespace WebApplication1
 
                         try
                         {
-                            socket.Connect(ips, port);
-                           // socket.Connect(endPoint);
-                            socket.Bind(endPoint);
+                            acceptedSocket.Connect(ips, port);
+                            // socket.Connect(endPoint);
+                            endPoint.Address.ToString();
+                            endPoint.Port.ToString();
+                            
+                            acceptedSocket.Bind(endPoint);
                         }
 
                         catch

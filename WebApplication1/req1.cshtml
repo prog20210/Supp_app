@@ -13,13 +13,14 @@
 @using MailKit.Net.Smtp;
 @using MailKit;
 @using MimeKit;
+@using System.Web
 
 @{
 
     <link rel="stylesheet" href="main.css">
 
 
-    if (IsPost) // Если входящий запрос
+if (IsPost) // Если входящий запрос
     {
         // Разобрать запрос. Присвоить значения переменным
 
@@ -47,7 +48,7 @@
         string[] dats = dt.GetDateTimeFormats();
 
 
-       
+
         string dattim = dats[46].ToString().Trim();
         string[] dat = dattim.Split(' ');
         string dt1 = dat[0].ToString().Trim();
@@ -62,7 +63,7 @@
         ConnectionStringSettings constr;
         constr = ConfigurationManager.ConnectionStrings["con"];
 
-     
+
 
         NpgsqlConnection con = new NpgsqlConnection();
 
@@ -127,7 +128,7 @@
             string SenderMail;
             string senderName = "Техническая поддержка";
             string recipientEmail;
-          
+
             string mailBody = "";
             string recipient1 = "";
             string recipientName = "mmmmmmmm";
@@ -138,11 +139,11 @@
             senderName = "ggggg";
 
 
-            
-             
 
 
-            // обработка почты новая процедура 
+
+
+            // обработка почты новая процедура
 
             var emailMessage = new MimeMessage();
 
@@ -165,7 +166,7 @@
             using (var client = new SmtpClient())
             {
 
-                client.Connect("smtp.yandex.ru", 465,true);
+                client.Connect("smtp.yandex.ru", 465, true);
 
 
                 try
