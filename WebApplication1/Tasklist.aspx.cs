@@ -14,6 +14,7 @@ using System.Text;
 
 
 
+
 namespace WebApplication1
 {
     public partial class Addtask : System.Web.UI.Page
@@ -86,20 +87,31 @@ namespace WebApplication1
 
                         System.Net.IPAddress ipaddress = System.Net.IPAddress.Parse("127.0.0.1");
 
-                        string ip = Convert.ToString(ipaddress);
+                        IPAddress[] ips = Dns.GetHostEntry(Dns.GetHostName()).AddressList;
+
+
 
                         // точка подключения 
-                        IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, port);
+                        IPEndPoint endPoint = new IPEndPoint(ipaddress, port);
 
                         // сокет 
                          Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-                        
+
                         //IPEndPoint endpoint = new IPEndPoint(addres, port);
+
+
+
+                     //   IPEndPoint myEP = new IPEndPoint(ips, port);
+                        Socket listeningSocket = new Socket(SocketType.Stream, ProtocolType.Tcp);
+                        listeningSocket.Bind(endPoint);
+                        listeningSocket.Listen(port);
+                        Socket acceptedSocket = listeningSocket.Accept();
+
 
                         try
                         {
-                            socket.ConnectAsync(ip, port);
+                            socket.Connect(ips, port);
                            // socket.Connect(endPoint);
                             socket.Bind(endPoint);
                         }

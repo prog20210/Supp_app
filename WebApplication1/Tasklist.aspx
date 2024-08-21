@@ -125,22 +125,21 @@
 <h2>Список задач на <%: DateTime.Now.Date.ToShortDateString() %> г. </h2>
 
 <%  
-   
-
-
-        Context.Response.Write("mmmmmmmmmmmmmmmmmmmm");
-
-   
 
 
 
+    Context.Response.Write(Context.Request.UserAgent.ToString());
+ 
+     
 
 
 
-            Response.Write ("<b>"+" nnnnnnnn   "+"</b> ");  //Пример возвращаемого ответа   
-                
+
+
+    Response.Write ("<b>"+" nnnnnnnn   "+"</b> ");  //Пример возвращаемого ответа   
+
     //Response.Write()  
-    
+
 
 
 

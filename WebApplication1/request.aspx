@@ -133,21 +133,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </head>
 
 
@@ -156,12 +141,8 @@
 <form action="/req1" method="post">
   <ul class="wrapper">
 
-<script type="text/javascript" async>
 
-   
-
-    
-
+  
 
 <li class="form-row">
         <label>E-Mail </label>
