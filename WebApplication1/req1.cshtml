@@ -1,7 +1,6 @@
 ﻿@using Npgsql;
 @using Npgsql.EntityFrameworkCore.PostgreSQL.Design;
 @using System.Globalization;
-
 @using System.Configuration;
 @using System.Diagnostics;
 @using System.Management.Automation;
@@ -13,14 +12,22 @@
 @using MailKit.Net.Smtp;
 @using MailKit;
 @using MimeKit;
-@using System.Web
+@using System.Web;
+@using System.Net;
+@using System.IO;
+@using System.Collections;
+@using System.Collections.Generic;
+@using System.Collections.Specialized;
+@using System.Reflection;
+@using System.Runtime.CompilerServices;
+@using System.Web;
 
 @{
 
     <link rel="stylesheet" href="main.css">
 
 
-if (IsPost) // Если входящий запрос
+    if (IsPost) // Если входящий запрос
     {
         // Разобрать запрос. Присвоить значения переменным
 
@@ -35,29 +42,50 @@ if (IsPost) // Если входящий запрос
         string firstname = Request.Form["firstName"];
         string otch = Request.Form["otch"];
         string dolz = Request.Form["dolz"];
+        string opsl = Request.Form["opsl"];
+      HttpFileCollectionBase fil = Request.Files;
+
+
+
+        //дата и время
+        DateTime dt = DateTime.Now;
+        string[] dats = dt.GetDateTimeFormats();
+        string[] fn = fil.AllKeys;  // This will get names of all files into a string array.
+        int i;
+        for (i = 0; i < fn.Length; i++)
+        {
+            Response.Write("File: " + Server.HtmlEncode(fn[i]) + "<br />");
+
+        }
+
+
+
+
+        string dattim = dats[46].ToString().Trim();
+        string[] dat = dattim.Split(' ');
+
+
+
+        //
+
+
+
+
         string ver = Request.Form["ver"];
 
-        string opsl = Request.Form["opsl"];
+
         string katsl = Request.Form["ver"];
         string tnumb = Request.Form["tnumb"];
         string from = "";
         string to = "";
         string subj = "";
         string body = "";
-        DateTime dt = DateTime.Now;
-        string[] dats = dt.GetDateTimeFormats();
-
-
-
-        string dattim = dats[46].ToString().Trim();
-        string[] dat = dattim.Split(' ');
-        string dt1 = dat[0].ToString().Trim();
-        string tim = dat[1].ToString().Trim();
 
 
 
 
-        string[] date1 = dt1.Split('-');
+
+        string[] date1 = dt.ToString().Split('-');
 
         string yer = date1[0].ToString().Trim();
         ConnectionStringSettings constr;
@@ -101,7 +129,7 @@ if (IsPost) // Если входящий запрос
 
             com.CommandText = "insert into req (id, email, trademark, city, dep, firstname, lastname, otch, dolz, opsl,dat,tim,tnumb,urtver,yr,status)" + " " +
         "values" + " " + "(" + numbn.ToString() + "," + "'" + email + "'" + "," + "'" + trademark + "'" + "," + "'" + city + "'" + "," + "'" + dep + "'" + "," + "'" + firstname + "'" + "," +
-        "'" + lastname + "'" + "," + "'" + otch + "'" + "," + "'" + dolz + "'" + "," + "'" + opsl + "'" + "," + " TO_DATE (" + "'" + dt1 + "'" + "," + "'YYYY-MM-DD'" + ")" + "," + "LOCALTIME" + "," + "'" + tnumb + "'" + "," + "'" + ver + "'" + "," + "'" + yer + "'" + "," + "'" + "В работе" + "'" + ")";
+        "'" + lastname + "'" + "," + "'" + otch + "'" + "," + "'" + dolz + "'" + "," + "'" + opsl + "'" + "," + " TO_DATE (" + "'" + dt + "'" + "," + "'YYYY-MM-DD'" + ")" + "," + "LOCALTIME" + "," + "'" + tnumb + "'" + "," + "'" + ver + "'" + "," + "'" + yer + "'" + "," + "'" + "В работе" + "'" + ")";
             // TO_TIME ('08:30 AM', 'HH:MI AM')1
 
             com.ExecuteScalar();
@@ -245,6 +273,10 @@ if (IsPost) // Если входящий запрос
             //hhhh
 
         }
+
+        string zap;
+
+
 
     }
 

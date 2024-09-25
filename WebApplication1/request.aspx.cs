@@ -32,9 +32,9 @@ namespace WebApplication1
         }
 
 
-        public  string zap(string mail)
+        public  string Zap(string mail)
         {
-            
+     
 
             return mail;
 

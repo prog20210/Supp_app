@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Npgsql;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Design;
 
 namespace WebApplication1.Controllers
 {
@@ -11,12 +13,21 @@ namespace WebApplication1.Controllers
         // GET: task
         public ActionResult Index()
         {
+
+        
+
+           
             return View();
+
+
+
         }
 
         // GET: task/Details/5
         public ActionResult Details(int id)
         {
+            
+
             return View();
         }
 
@@ -85,5 +96,16 @@ namespace WebApplication1.Controllers
                 return View();
             }
         }
+        [HttpGet]
+        public ActionResult Fillform(string email)
+        {
+           
+            return View();
+        }
+
+
+
+
+
     }
 }

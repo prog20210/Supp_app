@@ -122,11 +122,7 @@
 
 </style>
 
-              <script runat="server">
-
-
-    
-</script>
+            
 
 
 
@@ -139,7 +135,7 @@
 
 <body>
 <h2>Форма отправки запроса в отдел технической поддержки </h2>
-<form action="/req1" method="post">
+<form action="/req1" method="post" name="req" enctype="multipart/form-data">
   <ul class="wrapper">
 
 
@@ -161,7 +157,7 @@
     
           <li class="form-row">
         <label>Подразделение</label>
-        <input name="dep" value="" />
+        <input name="dep" value=""/>
     </li>
      <li class="form-row">
         <label>Фамилия </label>
@@ -202,6 +198,11 @@
         <input name="opsl" required />
     </li>
 
+<li class="form-row">
+
+        <label>Прикрепленные файлы</label>
+        <input type="file" name="uploads" />
+    </li>
       
 
 <a href="/ztp.pdf">Порядок заполнения формы запроса </a>
@@ -220,7 +221,7 @@
 
 
 <p align="center">
-    <input type="button" class="butt" name="fill" onclick="request_aspx" value="Заполнить" />
+    <input type="button" class="butt" name="fill" onclick="zap" value="Заполнить" />
 </p>
 
 

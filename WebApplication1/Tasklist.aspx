@@ -125,14 +125,9 @@
 <h2>Список задач на <%: DateTime.Now.Date.ToShortDateString() %> г. </h2>
 
 <%  
-
-    
- 
-    
-  
     Response.Write ("<b>"+" nnnnnnnn   "+"</b> ");  //Пример возвращаемого ответа   
 
-    //Response.Write()  
+  
 
 
 
