@@ -43,14 +43,20 @@
         string otch = Request.Form["otch"];
         string dolz = Request.Form["dolz"];
         string opsl = Request.Form["opsl"];
-      HttpFileCollectionBase fil = Request.Files;
+        HttpFileCollectionBase fil = this.Request.Files;
+        string[] fn = fil.AllKeys;  // This will get names of all files into a string array.
+        foreach (string filkey in fil)
+        {
+            var file = this.Request.Files[filkey] as HttpPostedFileBase;
+           // file.SaveAs(file.FileName); доделать форму чтобы файлы отправлялись 
+        }
 
 
 
         //дата и время
         DateTime dt = DateTime.Now;
         string[] dats = dt.GetDateTimeFormats();
-        string[] fn = fil.AllKeys;  // This will get names of all files into a string array.
+
         int i;
         for (i = 0; i < fn.Length; i++)
         {

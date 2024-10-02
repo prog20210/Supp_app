@@ -201,7 +201,7 @@
 <li class="form-row">
 
         <label>Прикрепленные файлы</label>
-        <input type="file" name="uploads" />
+        <input accept="image/*" id="File1" multiple="multiple" name="File1" type="file" /> 
     </li>
       
 

@@ -34,7 +34,7 @@
         string t1;
         StringWriter sw = new StringWriter();
         DateTime dt1;
-        string[] podp=new String[1];
+        string[] podp = new String[1];
         int t3 = 0;
 
 
@@ -85,7 +85,7 @@
             com.CommandText = "select COUNT(*) from req";
 
             // получить текущее количество столбцов в таблице из БД
-            nz = Convert.ToInt16(com.ExecuteScalar());
+            int nzap = Convert.ToInt16(com.ExecuteScalar());
 
 
             com.CommandText = "select * from req";
@@ -145,7 +145,7 @@
 
                     // неправильно обрабатывается запрос посмотреть 
 
-                    NpgsqlCommand com2 = con.CreateCommand();
+                    NpgsqlCommand com1 = con.CreateCommand();
 
 
 
@@ -156,49 +156,64 @@
 
                     con1.Open();
 
+                    com1.CommandText = "select count(zagl) from otcols";
 
-                    int nzap = 0;
 
-                    com2.CommandText = "Select count(zagl) from otcols";
+                    string namcol;
 
-                    nzap=Convert.ToInt32(com2.ExecuteScalar());
+                    int nzap2 =  Convert.ToInt32(com1.ExecuteScalar());
 
+                    NpgsqlCommand com2 = con.CreateCommand();
 
                     com2.CommandText = "select zagl from otcols order by id asc";
-                    string namcol;
+
 
                     NpgsqlDataReader rd2 = com2.ExecuteReader();
 
-
-
-                    t3 = 0;
-
-                    for(t3=0;t3<=nzap;t3++)
-
-
+                    if (rd2.HasRows)
                     {
-                        namcol = "";
-
-                        tr = doc.CreateElement("tr");
-                        tbody.AppendChild(tr);
-
-                        var th = doc.CreateElement("th");
 
 
-                        namcol = rd2[t3].ToString();
+                        t3 = 0;
+                        string[] namcol2=new string[2];
+
+                        int length = nzap2;
+
+                        Array.Resize<string>(ref namcol2, length);
 
 
-                        var title = doc.CreateTextNode(namcol);
-                        th.AppendChild(title);
-                        tr.AppendChild(th);
+                        string tt = "";
 
-                        t3 = t3 + 1; //  итоговое число колонок
-                        rd2.NextResult();
+                        for (t3 = 0; t3 <= nzap2-1; t3++)
+
+
+                        {
+                          // tt =rd2[0].
+
+                             tr = doc.CreateElement("tr");
+                            tbody.AppendChild(tr);
+
+                            var th = doc.CreateElement("th");
+
+
+
+
+                            var title = doc.CreateTextNode(namcol2[t3]);
+                            th.AppendChild(title);
+                            tr.AppendChild(th);
+
+                       
+                            rd2.NextResult();
+
+                        }
+
+                        rd2.Close();
+
+
+
+
 
                     }
-
-
-
 
 
 
@@ -267,7 +282,7 @@
         }
 
         catch
-        {
+          {
 
         }
 
@@ -336,137 +351,23 @@
 
 
                     @{
-                        
-                        
                         //добавление в тело таблицы
 
                         var document = new HTMLDocument();
-
-                        // переписать обработку тела списка задач 
-
-
-
-                        /////////////////////////////////////
-                        for (i = 0; i <= nz; i++)
-                        {
-
-
-                            // цикл по строкам
-                            for (int h = 1; h <= 6; h++)  //nz- к-во строк
-                            {
-                    <tr>
-                        <td align="center">
-
-                            @dat
-
-                        </td>
-
-                        <td align="center">
-
-                            @tim[1]
-
-                        </td>
-
-                        <td align="center">
-                            @{
-
-                                dt = @dat.Split('.');
-
-                                year = dt[2];
-
-
-                            }
-
-                            @year
-
-                        </td>
+                        NpgsqlCommand com3 = con.CreateCommand();
 
 
 
-
-                        <td align="center">
-
-                            j
-
-                        </td>
+                        NpgsqlConnection con3 = new NpgsqlConnection();
 
 
-                        <td align="center">
+                        con3.ConnectionString = constr.ToString();
 
-                            pppppppppppppppppp
-
-                        </td>
+                        con3.Open();
 
 
-
-                        <td align="center">
-
-                            ghghghhghhhjjjjikk
-
-                        </td>
-
-
-
-
-
-                        <td align="center">
-
-                           stob
-
-                        </td>
-
-
-
-
-
-
-
-
-
-                    </tr>
-
-
-                               
-
-                            }
-
-
-                        }
+                        com3.CommandText = "select  * from req";
+                       // NpgsqlDataReader rd3 = com3.ExecuteReader();
+                        string st;
                     }
 
-                </tbody>
-
-
-            </table>
-
-
-
-
-       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <table name="html" class="table table-bordered  table-hover">
-
-               
-
-            <p align="center"> <button> Выгрузить отчет </button> </p>
-
-
-        </div>
-
-
-
-    </body>
-    </html>

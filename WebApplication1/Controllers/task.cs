@@ -14,7 +14,7 @@ namespace WebApplication1.Controllers
         public ActionResult Index()
         {
 
-        
+            Response.Write("kl;k;lk;k;lk;lk;l");
 
            
             return View();

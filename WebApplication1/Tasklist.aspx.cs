@@ -91,6 +91,7 @@ namespace WebApplication1
                         // точка подключения 
                         IPEndPoint endPoint = new IPEndPoint(ipaddress, port);
 
+                       
                         Socket listeningSocket = new Socket(SocketType.Stream, ProtocolType.Tcp);
 
                         AddressFamily fam= new AddressFamily();
