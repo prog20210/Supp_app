@@ -16,7 +16,7 @@ namespace WebApplication1.Controllers
 
             Response.Write("kl;k;lk;k;lk;lk;l");
 
-           
+
             return View();
 
 
@@ -26,7 +26,7 @@ namespace WebApplication1.Controllers
         // GET: task/Details/5
         public ActionResult Details(int id)
         {
-            
+
 
             return View();
         }
@@ -99,13 +99,13 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public ActionResult Fillform(string email)
         {
-           
+
+
             return View();
         }
 
-
-
-
-
     }
+
+
 }
+

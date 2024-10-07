@@ -131,6 +131,7 @@
 
 
 </head>
+              
 
 
 <body>
@@ -143,11 +144,11 @@
 
 <li class="form-row">
         <label>E-Mail </label>
-        <input name="email" value="" required/>
+        <input name="email" value="<%= ((string)Context.Items["email"]) %>" required/>
     </li>
 <li class="form-row">
         <label>Марка </label>
-        <input name="trademark" value="" />
+        <input name="trademark" value="<%= ((string)Context.Items["trademark"]) %>"" />
         </li>
     
     <li class="form-row">
@@ -161,41 +162,41 @@
     </li>
      <li class="form-row">
         <label>Фамилия </label>
-        <input name="lastName" />
+        <input name="lastName" value="" />
         </li>
           <li class="form-row">
 
         <label>Имя</label>
-        <input name="firstName" />
+        <input name="firstName" value="" />
     </li>
       
       <li class="form-row">
 
         <label>Отчество </label>
-        <input name="otch" />
+        <input name="otch"  value=""/>
     </li>
    <li class="form-row">
 
         <label>Должность </label>
-        <input name="dolz" />
+        <input name="dolz" value="" />
     </li>
 
       <li class="form-row">
 
         <label>Телефонный номер </label>
-        <input name="tnumb" />
+        <input name="tnumb" value="" />
     </li>
 
       <li class="form-row">
 
         <label>Версия URT, Тип и версия операционной системы  </label>
-        <input name="ver" required />
+        <input name="ver" required value=""/>
     </li>
 
 <li class="form-row">
 
         <label>Краткое описание случая</label>
-        <input name="opsl" required />
+        <input name="opsl"  value="" />
     </li>
 
 <li class="form-row">

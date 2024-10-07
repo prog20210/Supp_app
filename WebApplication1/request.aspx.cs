@@ -16,9 +16,11 @@ namespace WebApplication1
         string email;
         protected void Page_Load(object sender, EventArgs e)
         {
+            // получить текущего пользователя, извлечь e-mail 
+            string eml = "avsemykin2016@yandex.ru";
+            Zap(eml);
 
-
-
+           
          
 
 
@@ -34,8 +36,11 @@ namespace WebApplication1
 
         public  string Zap(string mail)
         {
-     
+            string a = mail;
 
+            //Заполнение формы =заполнение контекста HTTP 
+            HttpContext.Current.Items["email"] = "avsemykin2016@yandex.ru";
+            HttpContext.Current.Items["trademark"] = "kljlkjkljkljlkjkljkljklj";
             return mail;
 
         }
