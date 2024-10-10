@@ -79,8 +79,7 @@ namespace WebApplication1
                 con.Open();
 
 
-
-
+                string[] gg;
                 int num;
                 int numbn;
                 int i = 0;
@@ -88,29 +87,54 @@ namespace WebApplication1
 
 
                 com.CommandText = "select * from users where email=" + @"'" + mail + @"'";
+
+                NpgsqlDataReader rd1 = com.ExecuteReader();
+
+
+                while (rd1.Read())
+                {
+                    fn = rd1[1].ToString();
+                    ln = rd1[2].ToString();
+                    otch = rd1[3].ToString();
+                    trademark=rd1[5].ToString();
+                    dep = rd1[6].ToString();
+                    dolz = rd1[4].ToString();
+                    tnumb = rd1[8].ToString();
+                    urtver =rd1[9].ToString();
+                   
+                }
+
+
+
+                //Заполнение формы =заполнение контекста HTTP 
+                //     HttpContext.Current.Items["email"] = "avsemykin2016@yandex.ru";
+                //       HttpContext.Current.Items["trademark"] = "kljlkjkljkljlkjkljkljklj";
+
+
+
+                //Заполнение формы =заполнение контекста HTTP 
+                HttpContext.Current.Items["email"] = "avsemykin2016@yandex.ru";
+                HttpContext.Current.Items["trademark"] = "URT";
+                HttpContext.Current.Items["lastname"] = ln;
+                HttpContext.Current.Items["firstname"] = fn;
+                HttpContext.Current.Items["otch"] = otch;
+                HttpContext.Current.Items["dep"] = dep;
+                HttpContext.Current.Items["dolz"] = dolz;
+                HttpContext.Current.Items["ver"] = urtver;
+
+
+
                
-                
-   //*                     
-
-                      
-
-                        //Заполнение формы =заполнение контекста HTTP 
-                   //     HttpContext.Current.Items["email"] = "avsemykin2016@yandex.ru";
-                 //       HttpContext.Current.Items["trademark"] = "kljlkjkljkljlkjkljkljklj";
 
 
 
-                        //Заполнение формы =заполнение контекста HTTP 
-                        HttpContext.Current.Items["email"] ="avsemykin2016@yandex.ru";
-                        HttpContext.Current.Items["trademark"] ="kjlkjlkjlkjlk";
-                      
 
-                    }
 
-                
+            }
 
             catch { }
-
+            return mail;
+        }
 
 
 
@@ -123,7 +147,7 @@ namespace WebApplication1
 
 
            
-            return mail;
+            ///return mail;
 
 
 
@@ -133,4 +157,4 @@ namespace WebApplication1
   
     }
 
-}
+

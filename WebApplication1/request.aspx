@@ -168,18 +168,18 @@
       <li class="form-row">
 
         <label>Отчество </label>
-        <input name="otch"  value="<%= ((string)Context.Items["otch"]) %>""/>
+        <input name="otch"  value="<%= ((string)Context.Items["otch"]) %>"/>
     </li>
    <li class="form-row">
 
         <label>Должность </label>
-        <input name="dolz" value="" />
+        <input name="dolz" value="<%= ((string)Context.Items["dolz"]) %>" />
     </li>
 
       <li class="form-row">
 
         <label>Телефонный номер </label>
-        <input name="tnumb" value="" />
+        <input name="tnumb" value="<%= ((string)Context.Items["tnumb"]) %>" />
     </li>
 
       <li class="form-row">

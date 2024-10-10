@@ -610,7 +610,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="Default - Копировать.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Tasklist.aspx" />
     <Content Include="Contact.aspx" />
@@ -684,13 +683,6 @@
   <ItemGroup>
     <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="Controllers\task.cs" />
-    <Compile Include="Default - Копировать.aspx.cs">
-      <DependentUpon>Default - Копировать.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default - Копировать.aspx.designer.cs">
-      <DependentUpon>Default - Копировать.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

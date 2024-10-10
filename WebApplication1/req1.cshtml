@@ -45,10 +45,13 @@
         string opsl = Request.Form["opsl"];
         HttpFileCollectionBase fil = this.Request.Files;
         string[] fn = fil.AllKeys;  // This will get names of all files into a string array.
+       
         foreach (string filkey in fil)
         {
             var file = this.Request.Files[filkey] as HttpPostedFileBase;
-            file.SaveAs("G:"+@"\"+file.FileName); //доделать форму чтобы файлы отправлялись 
+       
+            
+            file.SaveAs("tt.jpg"); //доделать форму чтобы файлы отправлялись 
         }
 
 
