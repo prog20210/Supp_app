@@ -48,7 +48,7 @@
         foreach (string filkey in fil)
         {
             var file = this.Request.Files[filkey] as HttpPostedFileBase;
-           // file.SaveAs(file.FileName); доделать форму чтобы файлы отправлялись 
+            file.SaveAs("G:"+@"\"+file.FileName); //доделать форму чтобы файлы отправлялись 
         }
 
 

@@ -15,7 +15,20 @@ namespace WebApplication1
 {
     public partial class request : System.Web.UI.Page
     {
-        string email;
+        string email="";
+        string fn="";
+        string ln="";
+        string otch="";
+        string trademark="";
+        string city="";
+        string dep="";
+        string dolz="";
+        string tnumb="";
+        string urtver = "";
+
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // получить текущего пользователя, извлечь e-mail 
@@ -62,10 +75,10 @@ namespace WebApplication1
 
             try
             {
-               
+
                 con.Open();
-               
-               
+
+
 
 
                 int num;
@@ -74,38 +87,27 @@ namespace WebApplication1
                 //com.CommandText = "select max(id) from req";
 
 
-                com.CommandText = "select * from users";
-                NpgsqlDataReader rd = com.ExecuteReader();
+                com.CommandText = "select * from users where email=" + @"'" + mail + @"'";
+               
+                
+   //*                     
+
+                      
+
+                        //Заполнение формы =заполнение контекста HTTP 
+                   //     HttpContext.Current.Items["email"] = "avsemykin2016@yandex.ru";
+                 //       HttpContext.Current.Items["trademark"] = "kljlkjkljkljlkjkljkljklj";
 
 
 
-                if (rd.HasRows) {
+                        //Заполнение формы =заполнение контекста HTTP 
+                        HttpContext.Current.Items["email"] ="avsemykin2016@yandex.ru";
+                        HttpContext.Current.Items["trademark"] ="kjlkjlkjlkjlk";
+                      
 
-                    while (rd.Read())
-                    {
-                        string gg = rd.GetString(i);
-                        i = i + 1;
                     }
 
-
-                }
-                //Заполнение формы =заполнение контекста HTTP 
-                HttpContext.Current.Items["email"] = "avsemykin2016@yandex.ru";
-                HttpContext.Current.Items["trademark"] = "kljlkjkljkljlkjkljkljklj";
-
-
-
-                //Заполнение формы =заполнение контекста HTTP 
-                HttpContext.Current.Items["email"] =rd[0].ToString();
-                HttpContext.Current.Items["trademark"] = rd[1].ToString();
-                return mail;
-
-
-            }
-
-
-
-
+                
 
             catch { }
 

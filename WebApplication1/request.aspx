@@ -148,32 +148,27 @@
     </li>
 <li class="form-row">
         <label>Марка </label>
-        <input name="trademark" value="<%= ((string)Context.Items["trademark"]) %>"" />
+        <input name="trademark" value="<%= ((string)Context.Items["trademark"]) %>" />
         </li>
-    
-    <li class="form-row">
-        <label>Город </label>
-        <input name="city" value="" />
-    </li>
     
           <li class="form-row">
         <label>Подразделение</label>
-        <input name="dep" value=""/>
+        <input name="dep" value="<%= ((string)Context.Items["dep"]) %>"/>
     </li>
      <li class="form-row">
         <label>Фамилия </label>
-        <input name="lastName" value="" />
+        <input name="lastName" value="<%= ((string)Context.Items["lastname"]) %>" />
         </li>
           <li class="form-row">
 
         <label>Имя</label>
-        <input name="firstName" value="" />
+        <input name="firstName" value="<%= ((string)Context.Items["firstname"]) %>" />
     </li>
       
       <li class="form-row">
 
         <label>Отчество </label>
-        <input name="otch"  value=""/>
+        <input name="otch"  value="<%= ((string)Context.Items["otch"]) %>""/>
     </li>
    <li class="form-row">
 
