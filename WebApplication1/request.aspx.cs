@@ -25,14 +25,14 @@ namespace WebApplication1
         string dolz="";
         string tnumb="";
         string urtver = "";
-
+        public string eml = "";
 
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
             // получить текущего пользователя, извлечь e-mail 
-            string eml = "avsemykin2016@yandex.ru";
+            eml = "petr@yandex.ru";
             Zap(eml);
 
 
@@ -107,20 +107,20 @@ namespace WebApplication1
 
 
                 //Заполнение формы =заполнение контекста HTTP 
-                //     HttpContext.Current.Items["email"] = "avsemykin2016@yandex.ru";
+                //HttpContext.Current.Items["email"] = "avsemykin2016@yandex.ru";
                 //       HttpContext.Current.Items["trademark"] = "kljlkjkljkljlkjkljkljklj";
 
 
 
                 //Заполнение формы =заполнение контекста HTTP 
-                HttpContext.Current.Items["email"] = "avsemykin2016@yandex.ru";
-                HttpContext.Current.Items["trademark"] = "URT";
+                HttpContext.Current.Items["email"] =eml;
+                HttpContext.Current.Items["trademark"] = trademark;
                 HttpContext.Current.Items["lastname"] = ln;
                 HttpContext.Current.Items["firstname"] = fn;
                 HttpContext.Current.Items["otch"] = otch;
                 HttpContext.Current.Items["dep"] = dep;
                 HttpContext.Current.Items["dolz"] = dolz;
-                HttpContext.Current.Items["ver"] = urtver;
+                HttpContext.Current.Items["urtver"] = urtver;
 
 
 

@@ -185,13 +185,14 @@
       <li class="form-row">
 
         <label>Версия URT, Тип и версия операционной системы  </label>
-        <input name="ver" required value=""/>
+        <input name="urtver" value="<%= ((string)Context.Items["urtver"]) %>" />
+     
     </li>
 
 <li class="form-row">
 
         <label>Краткое описание случая</label>
-        <input name="opsl"  value="" />
+        <input name="opsl"  value=""  />
     </li>
 
 <li class="form-row">
