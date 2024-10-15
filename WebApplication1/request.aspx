@@ -144,7 +144,7 @@
 
 <li class="form-row">
         <label>E-Mail </label>
-        <input name="email" value="<%= ((string)Context.Items["email"]) %>" required/>
+        <input name="email" value="<%= ((string)Context.Items["email"]) %>" required onchange="location.reload(true)"/>
     </li>
 <li class="form-row">
         <label>Марка </label>

@@ -32,8 +32,8 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             // получить текущего пользователя, извлечь e-mail 
-            eml = "petr@yandex.ru";
-            Zap(eml);
+            //eml = "avsemykin2016@yandex.ru";
+            //Zap(eml);
 
 
 
