@@ -45,33 +45,64 @@
         string opsl = Request.Form["opsl"];
         HttpFileCollectionBase fil = this.Request.Files;
         string[] fn = fil.AllKeys;  // This will get names of all files into a string array.
-       
-        foreach (string filkey in fil)
+        DateTime dt = DateTime.Now;
+        int numobr = 0;
+        // Номер обращения. Считаем как Всего обращений за день +1 
+        ConnectionStringSettings constr;
+        constr = ConfigurationManager.ConnectionStrings["con"];
+
+
+
+        NpgsqlConnection con = new NpgsqlConnection();
+
+        ///con.ConnectionString = constr[0]
+
+
+        con.ConnectionString = constr.ToString();
+        try
         {
-            var file = this.Request.Files[filkey] as HttpPostedFileBase;
-       
-            
-            file.SaveAs(@"e:"+@"\"+"tt.jpg"); //доделать форму чтобы файлы отправлялись 
+            con.Open();
+            NpgsqlCommand com = con.CreateCommand();
+            com.CommandText = "select count(*) from req";
+            object numb0 = com.ExecuteScalar();
+            int numzap = Convert.ToInt32(numb0.ToString());
+
+        }
+
+        catch
+        {
+
+        }
+        //
+
+
+
+
+
+
+
+
+
+        string fd = Convert.ToString(dt);
+        string[] md=fd.Split(' ');
+        int i = 0;
+        numobr = numobr + 1;
+        foreach (string filkey in fil)
+
+        {
+
+
+            var file = this.Request.Files[i] as HttpPostedFileBase;
+            file.SaveAs(@"e:"+@"\"+Convert.ToString(md[0])+""+"_"+ Convert.ToString(numobr)+"_"+Convert.ToString(i)+".jpg"); //доделать форму чтобы файлы отправлялись 
+            i= i + 1;
+
         }
 
 
 
         //дата и время
-        DateTime dt = DateTime.Now;
-        string[] dats = dt.GetDateTimeFormats();
 
-        int i;
-        for (i = 0; i < fn.Length; i++)
-        {
-            Response.Write("File: " + Server.HtmlEncode(fn[i]) + "<br />");
-
-        }
-
-
-
-
-        string dattim = dats[46].ToString().Trim();
-        string[] dat = dattim.Split(' ');
+        //string[] dat = dattim.Split(' ');
 
 
 
@@ -97,12 +128,10 @@
         string[] date1 = dt.ToString().Split('-');
 
         string yer = date1[0].ToString().Trim();
-        ConnectionStringSettings constr;
+
         constr = ConfigurationManager.ConnectionStrings["con"];
 
-
-
-        NpgsqlConnection con = new NpgsqlConnection();
+        con = new NpgsqlConnection();
 
         ///con.ConnectionString = constr[0]
 

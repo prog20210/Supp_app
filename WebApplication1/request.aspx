@@ -144,7 +144,7 @@
 
 <li class="form-row">
         <label>E-Mail </label>
-        <input name="email" value="<%= ((string)Context.Items["email"]) %>" required onchange="location.reload(true)"/>
+        <input name="email" value="<%= ((string)Context.Items["email"]) %>" onchange="email_TextChanged" required/>
     </li>
 <li class="form-row">
         <label>Марка </label>
@@ -218,7 +218,7 @@
 
 
 <p align="center">
-    <input type="button" class="butt" name="fill" onclick="zap" value="Заполнить" />
+    <input type="button" class="butt" name="fill" onclick="Zap" value="Заполнить" />
 </p>
 
 
